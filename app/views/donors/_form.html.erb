@@ -1,34 +1,20 @@
-<%= form_for @donor do |f| %>
-      <%= f.label :username %>
-      <br>
-      <%= f.text_field :username %>
-  
-      <%= f.label :blood_type, "Blood Type" %>
-      <br>
-      <%= f.text_field :height %>
-  
-
-      <%= f.label :age, "Your Age" %>
-      <br>
-      <%= f.number_field :happiness %>
-
-  
-      <%= f.label :nausea, "Your State" %>
-      <br>
-      <%= f.text_field :nausea%>
-
-  
-      <%= f.label :admin, "Check box if you are a theme park owner" %>
-      <%= f.check_box :admin %>
-
-  
-
-      <%= f.label :password %>
-      <br>
-      <%= f.password_field :password%>
-  
-
-      <%= f.submit %>
-
-  
-   <% end %>
+<%= form_for(@donor) do |f| %>
+    <br>
+    <%= f.label :username, "Username" %><br>
+    <%= f.text_field :username %>
+    <br><br>
+    <%= f.label :blood_type, "Your Blood Type" %><br>
+    <%= f.text_field :blood_type %>
+    <br><br>
+    <%= f.label :age, "Your Age" %><br>
+    <%= f.number_field :age %>
+    <br><br>
+    <%= f.label :state, "Your State" %><br>
+    <%= f.text_field :state %>
+    <br><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password%>
+    <br><br>
+    <%= f.submit %>
+<% end %>
+    

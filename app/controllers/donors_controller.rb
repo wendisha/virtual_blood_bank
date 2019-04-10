@@ -1,6 +1,6 @@
 class DonorsController < ApplicationController
-    def create
-        Donor.create(donor_params)
+    def new
+        @donor = Donor.new
     end
  
     # whitelist the permitted params when sending form data to the db
