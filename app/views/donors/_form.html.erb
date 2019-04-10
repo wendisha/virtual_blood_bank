@@ -1,0 +1,20 @@
+<%= form_for(@donor) do |f| %>
+    <br>
+    <%= f.label :username, "Username" %><br>
+    <%= f.text_field :username %>
+    <br><br>
+    <%= f.label :blood_type, "Your Blood Type" %><br>
+    <%= f.text_field :blood_type %>
+    <br><br>
+    <%= f.label :age, "Your Age" %><br>
+    <%= f.number_field :age %>
+    <br><br>
+    <%= f.label :state, "Your State" %><br>
+    <%= f.text_field :state %>
+    <br><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password%>
+    <br><br>
+    <%= f.submit "Sign Up"%>
+<% end %>
+    
