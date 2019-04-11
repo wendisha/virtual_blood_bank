@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  donor_id: 1
+  clinic_id: 1
+  datetime: 2019-04-11 10:51:04
+
+two:
+  donor_id: 1
+  clinic_id: 1
+  datetime: 2019-04-11 10:51:04
