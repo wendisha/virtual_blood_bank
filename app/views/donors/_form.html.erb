@@ -7,7 +7,7 @@
     <%= f.text_field :blood_type %>
     <br><br>
     <%= f.label :age, "Your Age" %><br>
-    <%= f.number_field :age %>
+    <%= f.number_field :age, min:0 %>
     <br><br>
     <%= f.label :state, "Your State" %><br>
     <%= f.text_field :state %>
