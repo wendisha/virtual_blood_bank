@@ -2,4 +2,13 @@
 
 <%= link_to "Sign In", signin_path %>
 <%= link_to "Sign Up", new_donor_path %>
-<%= link_to('Log in with Facebook!', '/auth/facebook') %>
+
+
+<% if session[:donor_id] %>
+  <h1><%= @donor.name %></h1>
+  <h2>Email: <%= @donor.email %></h2>
+  <h2>Facebook UID: <%= @donor.uid %></h2>
+  <img src="<%= @donor.image %>">
+<% else %>
+  <%= link_to('Log in with Facebook!', '/auth/facebook') %>
+<% end %>
