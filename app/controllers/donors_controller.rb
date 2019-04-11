@@ -7,12 +7,18 @@ class DonorsController < ApplicationController
         @donor = Donor.new(donor_params)
         if @donor.save
           session[:donor_id] = @donor.id
-          flash[:message] = "Successfully Signed Up!"
-          redirect_to donors_path
+          #flash[:message] = "Successfully Signed Up!"
+          redirect_to donor_path(@donor)
         else
           render :new
         end
     end
+
+    def show
+        @donor = Donor.find_by_id(params[:id])
+        @message = params[:message]
+    end
+
  
     # whitelist the permitted params when sending form data to the db
     private

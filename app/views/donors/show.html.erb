@@ -1,0 +1,9 @@
+<%= @message %>
+
+<h2>Username: <%= @donor.username %></h2>
+<h2>Blood Type: <%= @donor.blood_type %></h2>
+<h2>Age: <%= @donor.age %></h2>
+<h2>State: <%= @donor.state %></h2>
+
+
+<%= link_to "Log Out", signout_path, method: :delete %>
