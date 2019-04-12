@@ -6,4 +6,8 @@ class ClinicsController < ApplicationController
             @clinics = Clinic.all
         #end
     end
+
+    def show
+        @clinic = Clinic.find_by_id(params[:id])
+    end
 end
