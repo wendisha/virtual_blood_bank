@@ -1,0 +1,7 @@
+<h1>Clinics</h1>
+
+<ul>
+  <% @clinics.each do |clinic| %>
+    <li><%= link_to clinic.name, clinic_path(clinic) %></li>
+  <% end %>
+</ul>
