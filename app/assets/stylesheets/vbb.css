@@ -3,6 +3,10 @@
     padding-bottom: 3rem;
     margin-bottom: 0;
     background-color: #fff;
+    background-image: image-url("woman-donating.jpg");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
   }
   @media (min-width: 768px) {
     .jumbotron {
@@ -31,3 +35,8 @@
   footer p {
     margin-bottom: .25rem;
   }
+
+  #thumbnail1 {
+    background-image: image-url("woman-donating.jpg");
+    background-size: cover;
+    }
