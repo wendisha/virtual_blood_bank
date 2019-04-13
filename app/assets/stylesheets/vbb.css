@@ -35,8 +35,3 @@
   footer p {
     margin-bottom: .25rem;
   }
-
-  #thumbnail1 {
-    background-image: image-url("woman-donating.jpg");
-    background-size: cover;
-    }
