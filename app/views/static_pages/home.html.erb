@@ -1,5 +1,13 @@
-<h1>Welcome to the Virtual Blood Bank</h1>
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Welcome to the Virtual Blood Bank</h1>
+        <p class="lead text-muted">Book an appointment, save a life.</p>
+        <p>
+            <div class="btn btn-primary my-2">
+                <%= link_to "Sign Up", new_donor_path %></div>
+            <div class="btn btn-secondary my-2">
+                <%= link_to "Sign In", signin_path %></div>
+        </p>
+    </div>
+</section>
 
-<%= link_to "Sign In", signin_path %><br>
-<%= link_to "Sign Up", new_donor_path %><br>
-<%= link_to('Log in with Facebook!', '/auth/facebook') %>
