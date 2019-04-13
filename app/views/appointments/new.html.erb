@@ -2,9 +2,9 @@
 <br>
 <h2>Choose the Clinic where you would like to make your blood donation:</h2>
 <br><br>
-<%= form_for @appointment do |f| %>
+<%= form_for [@donor, @appointment] do |f| %>
     <%= f.label :name, "Choose a Clinic:" %>
-    <%= f.collection_select(:id, @clinics, :id, :name) %><br>
+    <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br>
     <%= f.label :datetime, "When would you like to donate?" %>
     <%= f.date_field :datetime %><br>
     <%= f.submit "Create Appointment"  %>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/auth/facebook/callback' => 'sessions#create_from_omniauth'
   delete "/signout", to: "sessions#destroy"
   resources :donors do
-    resources :clinics, only: [:index]
+    resources :appointments, only: [:new, :create, :show]
   end 
   resources :appointments
   resources :clinics

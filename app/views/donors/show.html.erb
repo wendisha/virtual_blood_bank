@@ -6,7 +6,7 @@
 <h2>State: <%= @donor.state %></h2><br><br>
 
 <h1>Ready to make your next donation?</h1>
-<h3>Click <%= link_to "here", new_appointment_path %> to make an appointment.</h3>
+<h3>Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h3>
 <br>
 <h4><%= link_to "See available locations in your area.", clinics_path %></h4>
 <br>
