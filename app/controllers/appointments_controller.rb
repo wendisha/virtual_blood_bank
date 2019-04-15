@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
         @appointment.donor_id = params[:donor_id]
         if @appointment.save
             #binding.pry
-            redirect_to appointment_path(@appointment)
+            redirect_to donor_appointment_path(@appointment.donor_id, @appointment)
         else
             render plain: "There was an error!"
         end
