@@ -1,0 +1,7 @@
+<h1>Your Appointments</h1>
+
+<ul>
+  <% @donor.appointments.each do |appt| %>
+    <li><%= appt.datetime %></li>
+  <% end %>
+</ul>

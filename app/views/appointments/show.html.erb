@@ -1,2 +1,5 @@
 <h2><%=@appointment.datetime%></h2>
 <h2><%=@appointment.donor.username%></h2>
+
+<br><br>
+<h2>See All Your Appointments <%= link_to @appointment.donor.username, donor_appointments_path(@appointment.donor_id) %></h2>

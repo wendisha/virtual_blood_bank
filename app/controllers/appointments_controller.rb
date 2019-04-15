@@ -1,5 +1,9 @@
 class AppointmentsController < ApplicationController
 
+    def index
+        @donor = Donor.find(params[:donor_id])
+    end
+
     def new  
         @donor = Donor.find(params[:donor_id])
         @appointment = Appointment.create( :donor_id => params[:donor_id])
