@@ -6,6 +6,7 @@ class DonorsController < ApplicationController
     def create
         @donor = Donor.new(donor_params)
         if @donor.save
+            #loggin in user
           session[:donor_id] = @donor.id
           #flash[:message] = "Successfully Signed Up!"
           redirect_to donor_path(@donor)

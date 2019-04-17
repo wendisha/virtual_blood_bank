@@ -69,5 +69,3 @@ Clarifications:
 
   Nested route example:
     #recipients/1/bloodtype
-
-#request model
