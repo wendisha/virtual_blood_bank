@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   get "/signin", to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
   get '/auth/facebook/callback' => 'sessions#create_from_omniauth'
-  delete "/signout", to: "sessions#destroy"
+  get "/signout", to: "sessions#destroy"
   resources :donors do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
   resources :appointments
-  resources :clinics
+  resources :clinics, except: [:edit, :update,:destroy]
 
 end
