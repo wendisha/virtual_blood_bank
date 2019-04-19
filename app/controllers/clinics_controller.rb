@@ -1,15 +1,19 @@
 require 'pry'
 class ClinicsController < ApplicationController
     def index
-        #binding.pry
-        #if params[:donor_id]
-            #@clinics = Donor.find(params[:clinic_id]).clinics
-        #else
+        #create current_user and get its state from it
+        if params[:state]
+            #current_user.state
+            @clinics = Clinic.clinics_near_me
+        else
             @clinics = Clinic.all
-        #end
-    end
+        end
+      end
 
     def show
         @clinic = Clinic.find_by_id(params[:id])
     end
 end
+
+
+

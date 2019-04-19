@@ -9,15 +9,18 @@ class DonorsController < ApplicationController
             #loggin in user
           session[:donor_id] = @donor.id
           #flash[:message] = "Successfully Signed Up!"
+          #binding.pry
           redirect_to donor_path(@donor)
         else
+            #because of rendering, not redirecting
           render :new
         end
     end
 
     def show
         @donor = Donor.find_by_id(params[:id])
-        @message = params[:message]
+        
+        #@message = params[:message]
     end
 
  
