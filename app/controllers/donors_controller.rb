@@ -8,7 +8,7 @@ class DonorsController < ApplicationController
         if @donor.save
             #loggin in user
           session[:donor_id] = @donor.id
-          #flash[:message] = "Successfully Signed Up!"
+          flash[:message] = "Successfully Signed Up!"
           #binding.pry
           redirect_to donor_path(@donor)
         else
