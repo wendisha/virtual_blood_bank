@@ -1,19 +1,20 @@
+<section class="jumbotron text-center" >
 <%= form_for(@donor) do |f| %>
-    <br>
-    <label for="username"<%= f.label :username, "Username"%><br>
-    <%= f.text_field :username, :placeholder => "Required" %>
+    <label for="username"<%= f.label :username, "Username:" %><br>
+    <%= f.text_field :username, :placeholder => (@donor.errors.full_messages_for(:username).first || "This field is required") %>
     <br><br>
-    <%= f.label :blood_type, "Your Blood Type" %><br>
-    <%= f.text_field :blood_type, :placeholder => "Required" %>
+    <%= f.label :blood_type, "Your Blood Type:" %><br>
+    <%= f.text_field :blood_type, :placeholder => (@donor.errors.full_messages_for(:blood_type).first || "Required") %>
     <br><br>
-    <%= f.label :age, "Your Age" %><br>
+    <%= f.label :age, "Your Age:" %><br>
     <%= f.number_field :age, min:0 %>
     <br><br>
-    <%= f.label :state, "Your State" %><br>
+    <%= f.label :state, "Your State:" %><br>
     <%= f.text_field :state %>
     <br><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password, :placeholder => "Choose a password"%>
+    <%= f.label :password, "Password:" %><br>
+    <%= f.password_field :password, :placeholder => (@donor.errors.full_messages_for(:password).first || "This field is required") %>
     <br><br>
     <%= f.submit "Sign Up" %>
 <% end %>
+</section>

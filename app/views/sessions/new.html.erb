@@ -1,7 +1,7 @@
 <section class="jumbotron text-center" >
 <%= form_for @donor, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
     <%= f.label :username, "Enter your username:" %><br>
-    <%= f.text_field :username, :placeholder => (@donor.errors.full_messages_for(:description).first ) %>
+    <%= f.text_field :username %>
     <br><br>
     <%= f.label :password, "Enter your password:" %><br>
     <%= f.password_field :password %>
