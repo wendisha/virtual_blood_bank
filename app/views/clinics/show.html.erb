@@ -1,2 +1,5 @@
 <h2>Name: <%= @clinic.name %></h2>
 <h2>State: <%= @clinic.state %></h2>
+
+<button class="btn btn-outline-primary">
+<%= link_to "Sign Out", signout_path, method: :delete %></button>

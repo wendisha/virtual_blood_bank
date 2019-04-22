@@ -5,3 +5,6 @@
     <li><%= link_to clinic.name, clinic_path(clinic) %></li>
   <% end %>
 </ul>
+
+<button class="btn btn-outline-primary">
+<%= link_to "Sign Out", signout_path, method: :delete %></button>
