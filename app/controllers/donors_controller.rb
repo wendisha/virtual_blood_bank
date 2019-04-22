@@ -7,20 +7,18 @@ class DonorsController < ApplicationController
         @donor = Donor.new(donor_params)
         if @donor.save
             #log user in
-          session[:donor_id] = @donor.id
-          #WORKING!!!!!!
-          flash[:message] = "Successfully Signed Up!"
-          #binding.pry
-          redirect_to donor_path(@donor)
+            session[:donor_id] = @donor.id
+            flash[:message] = "Successfully Signed Up!"
+            redirect_to donor_path(@donor)
         else
             #because of rendering, not redirecting
-          render :new
+            #remember instance variables can only persist for one request
+            render :new
         end
     end
 
     def show
         @donor = Donor.find_by_id(params[:id])
-        
         #@message = params[:message]
     end
 

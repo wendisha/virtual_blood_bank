@@ -1,10 +1,10 @@
 <%= form_for(@donor) do |f| %>
     <br>
     <label for="username"<%= f.label :username, "Username"%><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, :placeholder => "Required" %>
     <br><br>
     <%= f.label :blood_type, "Your Blood Type" %><br>
-    <%= f.text_field :blood_type %>
+    <%= f.text_field :blood_type, :placeholder => "Required" %>
     <br><br>
     <%= f.label :age, "Your Age" %><br>
     <%= f.number_field :age, min:0 %>
@@ -13,7 +13,7 @@
     <%= f.text_field :state %>
     <br><br>
     <%= f.label :password %><br>
-    <%= f.password_field :password%>
+    <%= f.password_field :password, :placeholder => "Choose a password"%>
     <br><br>
     <%= f.submit "Sign Up" %>
 <% end %>
