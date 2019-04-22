@@ -1,17 +1,21 @@
 <%= flash[:message] %>
+<br><br>
 
-<h2>Username: <%= @donor.username %></h2>
-<h2>Blood Type: <%= @donor.blood_type %></h2>
-<h2>Age: <%= @donor.age %></h2>
-<h2>State: <%= @donor.state %></h2><br><br>
+<h2>Donor's Details</h2>
+<br><br>
 
-<h1>Ready to make your next donation?</h1>
+<h3>Username: <%= @donor.username %></h3>
+<h3>Blood Type: <%= @donor.blood_type %></h3>
+<h3>Age: <%= @donor.age %></h3>
+<h3>State: <%= @donor.state %></h3>
+<br><br>
+
+<h2>Ready to make your next donation?</h2>
 <h3>Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h3>
 <br>
 
-<h4><%= link_to "See available locations in your area.", clinics_path %></h4>
+<h3><%= link_to "See available locations in your area.", clinics_path %></h3>
 <br>
-
 
 <button class="btn btn-outline-primary">
 <%= link_to "Sign Out", signout_path, method: :delete %></button>
