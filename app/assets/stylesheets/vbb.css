@@ -3,7 +3,7 @@
     padding-bottom: 3rem;
     margin-bottom: 0;
     background-color: #fff;
-    background-image: image-url("woman-donating.jpg");
+    background-image: url("images/woman-donating.jpg");
     background-repeat: no-repeat;
     background-position: bottom center;
     background-size: cover;
@@ -34,4 +34,8 @@
   
   footer p {
     margin-bottom: .25rem;
+  }
+
+  .container {
+    text-align: center;
   }
