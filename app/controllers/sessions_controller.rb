@@ -22,8 +22,14 @@ class SessionsController < ApplicationController
             u.image = auth['info']['image']
         end
         session[:donor_id] = @donor.id
+        if logged_in?
+            flash[:message] = "Successfully authenticated via Google!"
+          else
+            flash[:message] = "Something went wrong. Try again."
+          end
         render 'static_pages/home'
     end
+
 
     def destroy
         session.clear
