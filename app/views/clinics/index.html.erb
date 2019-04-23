@@ -1,5 +1,7 @@
-<h2>Clinics</h2>
-<br><br>
+<section class="jumbotron text-center" >
+    <h2 class="display-4">Clinics</h2>
+</section><br>
+
 <ul>
   <% @clinics.each do |clinic| %>
     <li><%= link_to clinic.name, clinic_path(clinic) %></li>
