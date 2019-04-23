@@ -2,11 +2,13 @@
     <h2 class="display-4">Your Appointments</h2>
 </section><br>
 
-<ul>
-  <% @donor.appointments.each do |appt| %>
-    <li>Date: <%= link_to appt.datetime.strftime("%B %d, %Y"), donor_appointment_path(appt.donor_id, appt) %></li>
-  <% end %>
-</ul>
+<section class="container">
+  <ul>
+    <% @donor.appointments.each do |appt| %>
+      <li><h4 class="font-weight-light"><strong>Date: </strong><%= link_to appt.datetime.strftime("%B %d, %Y"), donor_appointment_path(appt.donor_id, appt) %></h4></li>
+    <% end %>
+  </ul>
+</section><br>
 
 <section class="container text-center">
   <button class="btn btn-outline-primary">
