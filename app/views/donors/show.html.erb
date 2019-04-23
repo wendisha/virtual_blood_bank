@@ -1,10 +1,9 @@
-<div class="container-fluid">
+<section class="jumbotron text-center" >
+
+
+<h2>Donor's Details</h2></section>
+<br><br>
 <%= flash[:message] %>
-<br><br>
-
-<h2>Donor's Details</h2>
-<br><br>
-
 <h3>Username: <%= @donor.username %></h3>
 <h3>Blood Type: <%= @donor.blood_type %></h3>
 <h3>Age: <%= @donor.age %></h3>
@@ -20,4 +19,3 @@
 
 <button class="btn btn-outline-primary">
 <%= link_to "Sign Out", signout_path, method: :delete %></button>
-</div>
