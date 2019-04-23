@@ -6,14 +6,49 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @donor = Donor.find_by(username: params[:donor][:username])
-        if @donor && @donor.authenticate(params[:donor][:password])
-            session[:donor_id] = @donor.id
-            redirect_to donor_path(@donor), notice: "Welcome back to the Virtual Blook Bank!"
-        else
+        if auth
+            @donor = Donor.find_by(uid: auth["uid"])
+            if @donor 
+                #binding.pry
+                session[:donor_id] = @donor.id
+                redirect_to donor_path(@donor)
+            else 
+                oauth_email = request.env["omniauth.auth"]["info"]["email"]
+                oauth_name = request.env["omniauth.auth"]["info"]["name"]
+                oauth_image = request.env["omniauth.auth"]["info"]["image"]
+                oauth_username = "#{oauth_name.downcase.split.join('_')}_#{Random.new.rand(99999)}"
+                oauth_blood_type = "Non-Assigned"
+                oauth_uid = request.env["omniauth.auth"]["uid"]
+                oauth_provider = request.env["omniauth.auth"]["provider"]
+                #remember to handle the password
+                @donor = Donor.new(
+                    :name => oauth_name, 
+                    :email => oauth_email, 
+                    :password_digest => '45ladsog', 
+                    :image => oauth_image, 
+                    :username => oauth_username,
+                    :blood_type => oauth_blood_type,
+                    :uid => oauth_uid,
+                    :provider => oauth_provider
+                    )
+                if @donor.save
+                    session[:donor_id] = @donor.id
+                    redirect_to donor_path(@donor)
+                else
+                    raise @donor.errors.full_messages.inspect
+                end
+            end
+        else 
+            @donor = Donor.find_by(username: params[:donor][:username])
+            if @donor && @donor.authenticate(params[:donor][:password])
+                session[:donor_id] = @donor.id
+                redirect_to donor_path(@donor), notice: "Welcome back to the Virtual Blook Bank!"
+            else
             redirect_to signin_path
+            end
         end
     end
+
     
     #def create_from_omniauth
         #@donor = Donor.find_or_create_by(uid: auth['uid']) do |u|
@@ -29,7 +64,7 @@ class SessionsController < ApplicationController
           #end
         #render 'static_pages/home'
     #end
-    def create_from_omniauth
+   
         #if request.env['omniauth.auth']
           #donor = Donor.create_with_omniauth(request.env['omniauth.auth'])
           #session[:donor_id] = donor.id    
@@ -41,32 +76,6 @@ class SessionsController < ApplicationController
           #redirect_to donor_path(donor.id)
         #end
       #end
-
-        if auth_hash = request.env["omniauth.auth"]
-            binding.pry
-            oauth_email = request.env["omniauth.auth"]["info"]["email"]
-            oauth_name = request.env["omniauth.auth"]["info"]["name"]
-            oauth_image = request.env["omniauth.auth"]["info"]["image"]
-            if @donor = Donor.find_by(:uid => oauth_uid)
-                session[:donor_id] = @donor.id
-                redirect_to donor_path(@donor)
-            else
-                @donor = Donor.new(:name => oauth_name, :email => oauth_email, :password_digest => SecureRandom.hex, :image => oauth_image)
-                @donor.password = SecureRandom.hex
-                if @donor.save
-                    session[:donor_id] = @donor.id
-                    redirect_to donor_path(@donor)
-                else
-                    raise @donor.errors.full_messages.inspect
-                end
-            end
-        end
-    end
-
-
-
-
-
 
     def destroy
         session.clear

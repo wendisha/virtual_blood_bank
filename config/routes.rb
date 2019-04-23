@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "/signin", to: "sessions#new"
   post "/sessions/create", to: "sessions#create"
-  get '/auth/facebook/callback' => 'sessions#create_from_omniauth'
-  #get 'auth/failure', to: redirect('/')
+  get "/auth/facebook/callback", to: "sessions#create"
+  get 'auth/failure', to: redirect('/')
+  #github
+  get '/auth/github/callback', to: 'sessions#create'
   
   delete "/signout", to: "sessions#destroy"
   resources :donors do
