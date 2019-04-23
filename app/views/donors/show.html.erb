@@ -1,21 +1,22 @@
 <section class="jumbotron text-center" >
+    <h2 class="display-4">Donor's Details</h2>
+</section><br>
 
-
-<h2>Donor's Details</h2></section>
-<br><br>
 <%= flash[:message] %>
-<h3>Username: <%= @donor.username %></h3>
-<h3>Blood Type: <%= @donor.blood_type %></h3>
-<h3>Age: <%= @donor.age %></h3>
-<h3>State: <%= @donor.state %></h3>
-<br><br>
 
-<h2>Ready to make your next donation?</h2>
-<h3>Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h3>
-<br>
+<section class="container">
+    <h4 class="font-weight-light"><strong>Username:</strong> <%= @donor.username %></h4>
+    <h4 class="font-weight-light"><strong>Blood Type:</strong> <%= @donor.blood_type %></h4>
+    <h4 class="font-weight-light"><strong>Age:</strong> <%= @donor.age %></h4>
+    <h4 class="font-weight-light"><strong>State:</strong> <%= @donor.state %></h4>
+</section><br>
 
-<h3><%= link_to "See available locations in your area.", clinics_path %></h3>
-<br>
+<section class="container text-center" >
+    <h3>Ready to make your next donation?</h3>
+    <h4 class="font-weight-light">Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h4><br>
 
-<button class="btn btn-outline-primary">
-<%= link_to "Sign Out", signout_path, method: :delete %></button>
+    <h4><%= link_to "See available locations in your area.", clinics_path %></h4><br>
+    <button class="btn btn-outline-primary">
+        <%= link_to "Sign Out", signout_path, method: :delete %>
+    </button>
+</section>
