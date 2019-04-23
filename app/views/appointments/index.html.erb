@@ -4,7 +4,7 @@
 
 <ul>
   <% @donor.appointments.each do |appt| %>
-    <li><%= link_to appt.datetime, donor_appointment_path(appt.donor_id, appt) %></li>
+    <li><%= link_to appt.datetime.strftime("%B %d, %Y"), donor_appointment_path(appt.donor_id, appt) %></li>
   <% end %>
 </ul>
 
