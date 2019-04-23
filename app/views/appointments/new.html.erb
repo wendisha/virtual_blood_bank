@@ -2,13 +2,15 @@
     <h2 class="display-4">New Appointment</h2>
 </section><br>
 
+<section class="container text-center">
 <%= form_for [@donor, @appointment] do |f| %>
-    <%= f.label :name, "Choose a Clinic:" %>
-    <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br>
-    <%= f.label :datetime, "When would you like to donate?" %>
-    <%= f.date_field :datetime %><br>
+    <%= f.label :name, "Choose a Clinic:" %><br>
+    <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br><br>
+    <%= f.label :datetime, "When would you like to donate?" %><br>
+    <%= f.date_field :datetime %><br><br>
     <%= f.submit "Create Appointment"  %>
 <% end %> 
+</section><br>
 
 <button class="btn btn-outline-primary">
 <%= link_to "Sign Out", signout_path, method: :delete %></button>
