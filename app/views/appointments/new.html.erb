@@ -2,8 +2,6 @@
     <h2 class="display-4">New Appointment</h2>
 </section><br>
 
-<h3>Choose the Clinic where you would like to make your blood donation:</h3>
-<br><br>
 <%= form_for [@donor, @appointment] do |f| %>
     <%= f.label :name, "Choose a Clinic:" %>
     <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br>
