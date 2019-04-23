@@ -2,8 +2,10 @@
     <h2 class="display-4">Appointment's Details</h2>
 </section><br>
 
-<h2><%=@appointment.datetime%></h2>
-<h2><%=@appointment.donor.username%></h2>
+<section class="container">
+    <h4 class="font-weight-light"><strong>Username:</strong> <%=@appointment.donor.username%></h4>
+    <h4 class="font-weight-light"><strong>Blood Type:</strong> <%= @appointment.datetime %></h4>
+</section><br>
 
 <br><br>
 <h2>See All Your Appointments <%= link_to @appointment.donor.username, donor_appointments_path(@appointment.donor_id) %></h2>
