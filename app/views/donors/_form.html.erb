@@ -1,7 +1,7 @@
 <section class="jumbotron text-center" >
 <%= form_for(@donor) do |f| %>
     <label for="username"<%= f.label :username, "Username:" %><br>
-    <%= f.text_field :username, :placeholder => (@donor.errors.full_messages_for(:username).first || "This field is required") %>
+    <%= f.text_field :username, :class => "errors", :placeholder => (@donor.errors.full_messages_for(:username).first || "This field is required") %>
     <br><br>
     <%= f.label :blood_type, "Your Blood Type:" %><br>
     <%= f.text_field :blood_type, :placeholder => (@donor.errors.full_messages_for(:blood_type).first || "Required") %>
