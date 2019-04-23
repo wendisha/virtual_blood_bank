@@ -2,11 +2,13 @@
     <h2 class="display-4">Clinics</h2>
 </section><br>
 
-<ul>
-  <% @clinics.each do |clinic| %>
-    <li><%= link_to clinic.name, clinic_path(clinic) %></li>
-  <% end %>
-</ul>
+<section class="container">
+  <ul>
+    <% @clinics.each do |clinic| %>
+      <li><h4 class="font-weight-light"><strong>Clinic: </strong><%= link_to clinic.name, clinic_path(clinic) %></h4></li>
+    <% end %>
+  </ul>
+</section><br>
 
 <button class="btn btn-outline-primary">
 <%= link_to "Sign Out", signout_path, method: :delete %></button>
