@@ -17,6 +17,19 @@ class DonorsController < ApplicationController
         end
     end
 
+    def self.create_with_omniauth(auth)
+        donor = find_or_create_by(uid: auth[‘uid’], provider:  auth[‘provider’])
+        donor.email = “#{auth[‘uid’]}@#{auth[‘provider’]}.com”
+        donor.password = auth[‘uid’]
+        donor.name = auth[‘info’][‘name’]
+        if Donor.exists?(donor)
+            donor
+        else
+            donor.save!
+            donor
+        end
+    end
+
     def show
         @donor = Donor.find_by_id(params[:id])
         #@message = params[:message]
