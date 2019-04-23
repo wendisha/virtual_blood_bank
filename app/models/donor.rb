@@ -5,4 +5,5 @@ class Donor < ApplicationRecord
     has_many :appointments
     has_many :clinics, through: :appointments
 
+    @@blood_types = ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]
 end

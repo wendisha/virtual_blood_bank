@@ -1,6 +1,7 @@
 class DonorsController < ApplicationController
     def new
         @donor = Donor.new
+        @blood_types = ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]
     end
 
     def create
