@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :donors do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
-  resources :appointments
+  #resources :appointments
   resources :clinics, except: [:edit, :update,:destroy]
 
 end
