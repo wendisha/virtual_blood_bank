@@ -13,5 +13,7 @@ Rails.application.routes.draw do
   end 
   #resources :appointments
   resources :clinics, except: [:edit, :update,:destroy]
-
+  resources :clinics do
+    resources :appointments, only: [:new, :create, :show, :index]
+  end 
 end
