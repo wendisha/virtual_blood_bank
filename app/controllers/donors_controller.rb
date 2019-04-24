@@ -1,4 +1,6 @@
 class DonorsController < ApplicationController
+    before_action :require_logged_in
+    
     def new
         @donor = Donor.new
         @blood_types = ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]

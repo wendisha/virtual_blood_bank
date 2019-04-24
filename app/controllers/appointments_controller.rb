@@ -1,4 +1,8 @@
 class AppointmentsController < ApplicationController
+    before_action :require_logged_in
+    before_action :current_donor
+    before_action :redirect_if_not_logged_in!
+
 
     def index
         @donor = Donor.find(params[:donor_id])
@@ -11,11 +15,9 @@ class AppointmentsController < ApplicationController
     end
     
     def create
-        #binding.pry
         @appointment = Appointment.new(appointment_params)
         @appointment.donor_id = params[:donor_id]
         if @appointment.save
-            #binding.pry
             redirect_to donor_appointment_path(@appointment.donor_id, @appointment)
         else
             render plain: "There was an error!"
@@ -31,7 +33,6 @@ class AppointmentsController < ApplicationController
     def appointment_params
         params.require(:appointment).permit(:datetime, :donor_id, :clinic_id)
     end
-
 
 end
 
