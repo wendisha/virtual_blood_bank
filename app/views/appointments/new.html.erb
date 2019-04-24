@@ -3,12 +3,20 @@
 </section><br>
 
 <section class="container text-center">
-    <%= form_for [@donor, @appointment] do |f| %>
-        <h4 class="font-weight-light"><strong><%= f.label :name, "Choose a Clinic:" %><br></strong></h4>
-        <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br><br>
-        <h4 class="font-weight-light"><strong><%= f.label :datetime, "When would you like to donate?" %><br></strong></h4>
-        <%= f.date_field :datetime %><br><br>
-        <%= f.submit "Create Appointment"  %>
-    <% end %><br><br> 
+    <% if @donor %>
+        <%= form_for [@donor, @appointment] do |f| %>
+            <h4 class="font-weight-light"><strong><%= f.label :name, "Choose a Clinic:" %><br></strong></h4>
+            <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br><br>
+            <h4 class="font-weight-light"><strong><%= f.label :datetime, "When would you like to donate?" %><br></strong></h4>
+            <%= f.date_field :datetime %><br><br>
+            <%= f.submit "Create Appointment"  %>
+        <% end %><br><br> 
+    <% else %>
+        <%= form_for [@clinic, @appointment] do |f| %>
+            <h4 class="font-weight-light"><strong><%= f.label :datetime, "When would you like to donate?" %><br></strong></h4>
+            <%= f.date_field :datetime %><br><br>
+            <%= f.submit "Create Appointment"  %>
+        <% end %><br><br>
+    <% end %>
 </section>
 
