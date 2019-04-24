@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_donor
     helper_method :logged_in?
     #before_action :current_donor
-    before_action :require_logged_in, except: [:new, :create, :home]
+    before_action :require_logged_in, except: [:new, :create, :home, :index]
 
     def logged_in?
         !!current_donor
