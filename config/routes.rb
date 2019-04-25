@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
   root "static_pages#home"
   get "/signin", to: "sessions#new"
+  get "/signup", to: "donors#new"
   post "/sessions/create", to: "sessions#create"
   get "/auth/facebook/callback", to: "sessions#create"
   get 'auth/failure', to: redirect('/')
-  #github
-  get '/auth/github/callback', to: 'sessions#create'
   get '/donors_clinics', to: 'clinics#donors_clinics', :as => 'donors_clinics'
-  
   delete "/signout", to: "sessions#destroy"
-  resources :donors do
+
+  resources :donors, except: [:new, :create] do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
-  #resources :appointments
+
   resources :clinics do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
