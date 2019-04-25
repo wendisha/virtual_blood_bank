@@ -1,6 +1,6 @@
 class DonorsController < ApplicationController
     before_action :require_logged_in, except: [:new, :create]
-    
+    #create another helper and redirect if not verified donor
     def new
         @donor = Donor.new
         @blood_types = ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]
