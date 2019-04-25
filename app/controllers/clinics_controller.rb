@@ -7,6 +7,7 @@ class ClinicsController < ApplicationController
             #binding.pry
             @clinics = Clinic.all
         end
+        @donor = current_donor.id
       end
 
     def show
