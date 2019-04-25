@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   #github
   get '/auth/github/callback', to: 'sessions#create'
+  get '/donors_clinics', to: 'clinics#donors_clinics', :as => 'donors_clinics'
   
   delete "/signout", to: "sessions#destroy"
   resources :donors do
