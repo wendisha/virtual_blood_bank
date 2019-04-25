@@ -6,4 +6,4 @@
   <% @donor.appointments.each do |appt| %>
     <h4 class="font-weight-light"><strong>Date: </strong><%= link_to appt.datetime.strftime("%B %d, %Y"), donor_appointment_path(appt.donor_id, appt) %></h4>
   <% end %>
-</section><br>
+</section><br><br>
