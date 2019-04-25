@@ -3,9 +3,7 @@
 </section><br>
 
 <section class="container">
-  <ul>
     <% @clinics.each do |clinic| %>
-      <li><h4 class="font-weight-light"><strong>Clinic: </strong><%= link_to clinic.name, clinic_path(clinic) %></h4></li>
+      <h4 class="font-weight-light"><strong>Clinic: </strong><%= link_to clinic.name, clinic_path(clinic) %></h4>
     <% end %>
-  </ul>
 </section><br>
