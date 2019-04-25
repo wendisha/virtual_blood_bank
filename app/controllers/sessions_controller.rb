@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
             @donor = Donor.find_by(username: params[:donor][:username])
             if @donor && @donor.authenticate(params[:donor][:password])
                 session[:donor_id] = @donor.id
-                flash[:message] = "Welcome back to the Virtual Blook Bank!"
+                flash[:message] = "Welcome back to the Virtual Blood Bank!"
                 redirect_to donor_path(@donor)
             else
                 flash[:message] = "Invalid username or password. Please try again."
