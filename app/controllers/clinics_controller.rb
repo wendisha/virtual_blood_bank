@@ -12,6 +12,7 @@ class ClinicsController < ApplicationController
 
     def show
         @clinic = Clinic.find_by_id(params[:id])
+        @donor = current_donor.id
     end
 end
 
