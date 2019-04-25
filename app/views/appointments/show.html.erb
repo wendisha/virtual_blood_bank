@@ -4,7 +4,7 @@
 
 <section class="container">
     <h4 class="font-weight-light"><strong>Username:</strong> <%=@appointment.donor.username%></h4>
-    <h4 class="font-weight-light"><strong>Blood Type:</strong> <%= @appointment.datetime %></h4>
+    <h4 class="font-weight-light"><strong>Date:</strong> <%= @appointment.datetime.strftime("%B %d, %Y") %></h4>
 </section><br>
 
 <section class="container text-center">
