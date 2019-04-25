@@ -9,6 +9,8 @@
             <%= f.collection_select(:clinic_id, @clinics, :id, :name) %><br><br>
             <h4 class="font-weight-light"><strong><%= f.label :datetime, "When would you like to donate?" %><br></strong></h4>
             <%= f.date_field :datetime, min: Date.today %><br><br>
+            <h4 class="font-weight-light"><strong><%= f.label :datetime, "What time?" %><br></strong></h4>
+            <%= f.time_field :datetime %><br><br>
             <%= f.submit "Create Appointment"  %>
         <% end %><br><br> 
     <% else %>
