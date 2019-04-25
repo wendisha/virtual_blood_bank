@@ -1,3 +1,5 @@
+<%= flash[:message] %>
+
 <section class="jumbotron text-center" >
 <%= form_for @donor, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
     <%= f.label :username, "Enter your username:" %><br>
