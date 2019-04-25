@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   get '/donors_clinics', to: 'clinics#donors_clinics', :as => 'donors_clinics'
   delete "/signout", to: "sessions#destroy"
 
-  resources :donors, except: [:new, :create] do
+  resources :donors, except: [:new, :edit, :update] do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
 
-  resources :clinics do
+  resources :clinics, only: [:index, :show] do
     resources :appointments, only: [:new, :create, :show, :index]
   end 
 end
