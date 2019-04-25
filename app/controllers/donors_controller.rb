@@ -1,5 +1,5 @@
 class DonorsController < ApplicationController
-    before_action :require_logged_in
+    before_action :require_logged_in, except: [:new, :create]
     
     def new
         @donor = Donor.new
