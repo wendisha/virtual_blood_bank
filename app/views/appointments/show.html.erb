@@ -1,12 +1,13 @@
-<section class="jumbotron text-center" >
+<section class="jumbotron text-center">
     <h2 class="display-4">Appointment's Details</h2>
 </section><br>
 
 <section class="container">
     <h4 class="font-weight-light"><strong>Username:</strong> <%=@appointment.donor.username%></h4>
+    <h4 class="font-weight-light"><strong>Clinic:</strong> <%= @appointment.clinic.name %></h4>
     <h4 class="font-weight-light"><strong>Date:</strong> <%= @appointment.datetime.strftime("%B %d, %Y") %></h4>
 </section><br>
 
 <section class="container text-center">
     <h2>See All Your Appointments <%= link_to @appointment.donor.username, donor_appointments_path(@appointment.donor_id) %></h2><br>
-</section>
+</section><br>
