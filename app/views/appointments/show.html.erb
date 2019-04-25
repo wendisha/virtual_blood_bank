@@ -6,6 +6,7 @@
     <h4 class="font-weight-light"><strong>Username:</strong> <%=@appointment.donor.username%></h4>
     <h4 class="font-weight-light"><strong>Clinic:</strong> <%= @appointment.clinic.name %></h4>
     <h4 class="font-weight-light"><strong>Date:</strong> <%= @appointment.datetime.strftime("%B %d, %Y") %></h4>
+    <h4 class="font-weight-light"><strong>Time:</strong> <%= @appointment.datetime.strftime("%l:%M%p") %></h4>
 </section><br>
 
 <section class="container text-center">
