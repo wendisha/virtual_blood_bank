@@ -2,9 +2,11 @@
     <h2 class="display-4">Donor's Details</h2>
 </section><br>
 
-<%= flash[:message] %>
-
 <section class="container">
+    <% if flash[:message] %>
+        <div class="alert alert-success" role="alert"><%= flash[:message] %></div>
+    <% end %><br>
+
     <h4 class="font-weight-light"><strong>Username:</strong> <%= @donor.username %></h4>
     <h4 class="font-weight-light"><strong>Blood Type:</strong> <%= @donor.blood_type %></h4>
     <h4 class="font-weight-light"><strong>Age:</strong> <%= @donor.age %></h4>
