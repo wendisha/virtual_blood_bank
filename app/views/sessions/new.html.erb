@@ -4,10 +4,10 @@
     <% end %><br>
 
     <%= form_for @donor, :url => url_for(:controller => 'sessions', :action => 'create') do |f| %>
-        <%= f.label :username, "Enter your username:" %><br>
+        <h4 class="font-weight-light" <%= f.label :username, "Enter your username:" %></h4>
         <%= f.text_field :username %><br><br>
-        <%= f.label :password, "Enter your password:" %><br>
-        <%= f.password_field :password %><br><br>
+        <h4 class="font-weight-light" <%= f.label :password, "Enter your password:" %></h4>
+        <%= f.password_field :password %><br><br><br>
         <%= f.submit "Sign In" %>
     <% end %>
 </section>
