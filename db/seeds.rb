@@ -11,3 +11,17 @@ Clinic.destroy_all
   Clinic.create!(name: Faker::Lorem.sentence(3),
                         state: Faker::Address.state_abbr)
 end
+
+blood_types = [{blood_type: "A+"},
+         {blood_type: "O+"},
+         {blood_type: "B+"},
+         {blood_type: "AB+"},
+         {blood_type: "A-"},
+         {blood_type: "O-"},
+         {blood_type: "B-"},
+         {blood_type: "AB-"}]
+
+blood_types.each do |blood_type|
+  BloodType.create(blood_type)
+end
+
