@@ -4,7 +4,7 @@
         <%= f.text_field :username, :class => "errors", :placeholder => (@donor.errors.full_messages_for(:username).first || "This field is required") %>
         <br><br>
         <h4 class="font-weight-light" <%= f.label :blood_type, "Blood Type:" %></h4>
-        <%= f.text_field :blood_type, :placeholder => (@donor.errors.full_messages_for(:blood_type).first || "Required") %>
+        <%= f.collection_select(:blood_type, BloodType.all, :blood_type, :blood_type) %>
         <br><br>
         <h4 class="font-weight-light" <%= f.label :age, "Age:" %></h4>
         <%= f.number_field :age, min:1 %>
