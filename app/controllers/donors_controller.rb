@@ -1,5 +1,6 @@
 class DonorsController < ApplicationController
     before_action :require_logged_in, except: [:new, :create]
+
     #create another helper and redirect if not verified donor
     def new
         @donor = Donor.new
@@ -21,7 +22,7 @@ class DonorsController < ApplicationController
     end
 
     def self.create_with_omniauth(auth)
-        donor = find_or_create_by(uid: auth[‘uid’], provider:  auth[‘provider’])
+        donor = find_or_create_by(uid: auth[‘uid’], provider: auth[‘provider’])
         donor.email = “#{auth[‘uid’]}@#{auth[‘provider’]}.com”
         donor.password = auth[‘uid’]
         donor.name = auth[‘info’][‘name’]
@@ -37,7 +38,6 @@ class DonorsController < ApplicationController
         @donor = Donor.find_by_id(params[:id])
         #@message = params[:message]
     end
-
  
     # whitelist the permitted params when sending form data to the db
     private
