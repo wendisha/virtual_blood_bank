@@ -25,11 +25,11 @@ Then open page in browser according to web address displayed in terminal (ex. ht
 
 
 ## Built With
-Ruby on Rails
-Oomniauth-Facebook
-Bootstrap
-Bcrypt
-Faker
+*Ruby on Rails
+*Omniauth-Facebook
+*Bootstrap
+*Bcrypt
+*Faker
 
 
 ## Contributing
