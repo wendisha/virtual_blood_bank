@@ -10,14 +10,15 @@ class AppointmentsController < ApplicationController
 
     #Identify if nested resource is under clinic or donor, get appropiate parameters
     def new 
-        @donor = Donor.find(params[:donor_id])
-        redirect_to root_path if !authenticate_donor?(@donor)
+        #@donor = Donor.find(params[:donor_id])
+        #redirect_to root_path if !authenticate_donor?(@donor)
         if params[:clinic_id]
             @clinic = Clinic.find(params[:clinic_id])
             params[:donor_id] = current_donor.id
             @appointment = Appointment.new( :clinic_id => params[:clinic_id], :donor_id => params[:donor_id])
         else
-            #@donor = Donor.find(params[:donor_id])
+            @donor = Donor.find(params[:donor_id])
+            redirect_to root_path if !authenticate_donor?(@donor)
             @appointment = Appointment.new( :donor_id => params[:donor_id])
             @clinics = Clinic.all
         end
