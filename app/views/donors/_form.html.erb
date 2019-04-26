@@ -10,7 +10,7 @@
         <%= f.number_field :age, min:1 %>
         <br><br>
         <h4 class="font-weight-light"  <%= f.label :state, "State (location):" %></h4>
-        <%= f.text_field :state %>
+        <%= f.collection_select(:state, State.all, :state, :state) %>
         <br><br>
         <h4 class="font-weight-light" <%= f.label :password, "Password:" %></h4>
         <%= f.password_field :password, :placeholder => (@donor.errors.full_messages_for(:password).first || "This field is required") %>
