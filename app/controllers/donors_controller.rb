@@ -22,12 +22,16 @@ class DonorsController < ApplicationController
                 end
             end
         else 
-            @donor = Donor.find_by(username: params[:donor][:username])
-            if @donor && @donor.authenticate(params[:donor][:password])
-                   session[:donor_id] = @donor.id
-                redirect_to donor_path(@donor), notice: "Welcome back to the Virtual Blook Bank!"
+            @donor = Donor.new(donor_params)
+            if @donor.save
+                #log user in
+                session[:donor_id] = @donor.id
+                flash[:message] = "Successfully Signed Up!"
+                redirect_to donor_path(@donor)
             else
-                 redirect_to signin_path
+                #because of rendering, not redirecting
+                #remember instance variables can only persist for one request
+                render :new
             end
         end
     end
@@ -40,5 +44,9 @@ class DonorsController < ApplicationController
     private
     def donor_params
         params.require(:donor).permit(:username, :password, :blood_type, :age, :state)
+    end
+
+    def auth
+      request.env['omniauth.auth']
     end
 end
