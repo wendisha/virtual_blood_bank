@@ -1,11 +1,10 @@
 class Donor < ApplicationRecord
-    validates :username, presence: true, uniqueness: true
+    validates :username, presence: true
+    validates_uniqueness_of :username, :case_sensitive => false
     validates :blood_type, presence: true
     has_secure_password
     has_many :appointments
     has_many :clinics, through: :appointments
-
-    @@blood_types = ["A+", "O+", "B+", "AB+", "A-", "O-", "B-", "AB-"]
 
     #helper method to create donor when loggin in through Facebook for the first time
     def self.new_donor_from_auth(auth)
