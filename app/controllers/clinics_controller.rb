@@ -20,6 +20,3 @@ class ClinicsController < ApplicationController
         @donor = current_donor.id
     end
 end
-
-
-
