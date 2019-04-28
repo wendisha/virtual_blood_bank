@@ -43,7 +43,16 @@ class AppointmentsController < ApplicationController
     end
 
     def show
-        @appointment = Appointment.find(params[:id])
+        if params[:clinic_id]
+            @appointment = Appointment.find(params[:id])
+        else
+            @donor = Donor.find(params[:donor_id])
+            if @donor.id == current_donor.id
+                @appointment = Appointment.find(params[:id])
+            else
+                render plain: "You are not authorized!"
+            end
+        end
     end
 
     private
