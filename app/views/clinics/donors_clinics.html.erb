@@ -9,5 +9,6 @@
   <% @clinics.each do |clinic| %>
     <h4 class="font-weight-light"><strong>Clinic: </strong><%= link_to clinic.name, clinic_path(clinic) %></h4>
   <% end %><br>
+  <h4 class="font-weight-light"><%= link_to "See all clinics.", clinics_path %></h4>
   <h4 class="font-weight-light">Click <%= link_to "here", donor_path(@donor) %> to go back to your details.</h4><br><br>
 </section>
