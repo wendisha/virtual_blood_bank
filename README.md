@@ -1,8 +1,17 @@
 # README
 
 ## Virtual Blood Bank
+
+<h1 align="center">
+  <br>
+  <img src="https://i.imgur.com/J89aGNA.jpg" alt="VBB" title="Welcome to the Virtual Blood Bank!" width="160">
+</h1>
+<h4 align="center">Book an appointment, save a life.</h4>
+
 CMS that allows users to register and and book appointments to donate blood in any of the different clinics listed.
 
+# Demo
+Watch it <a href="https://youtu.be/5P-135Uf-mE">here</a>.
 
 ## Installation for OS X, Windows, Linux
 1. Clone this repository and execute:
