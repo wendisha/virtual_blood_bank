@@ -61,3 +61,7 @@ Navigation Flow:
             •Recipient's Homepage
             -Link to Create a Profile (new user) or to Edit Profile (existing user)
             -Logout option
+
+
+To Do:
+-Create static page for rendering errors!
