@@ -12,6 +12,9 @@ class ClinicsController < ApplicationController
             @clinics = Clinic.clinics_near_me(current_donor)
         end
         @donor = current_donor.id
+        if @clinics.empty?
+            flash[:message] = "At this moment, there are no clinics in your area."
+        end
     end
 
     #Show details of an specific clinic
