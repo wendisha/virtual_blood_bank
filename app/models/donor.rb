@@ -1,12 +1,12 @@
 class Donor < ApplicationRecord
+    has_many :appointments
+    has_many :clinics, through: :appointments
     validates :username, presence: true
     validates_uniqueness_of :username, :case_sensitive => false
     validates :blood_type, presence: true
     has_secure_password
-    has_many :appointments
-    has_many :clinics, through: :appointments
 
-    #helper method to create donor when loggin in through Facebook for the first time
+    #Helper method to create donor when loggin in through Facebook for the first time
     def self.new_donor_from_auth(auth)
         Donor.new(
             :name => request.env["omniauth.auth"]["info"]["name"], 
