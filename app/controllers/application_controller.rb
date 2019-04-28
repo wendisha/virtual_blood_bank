@@ -6,15 +6,17 @@ class ApplicationController < ActionController::Base
     helper_method :auth
     before_action :require_logged_in, except: [:new, :create, :home, :index]
 
+    #Verify donor is logged in
     def logged_in?
         !!current_donor
     end
 
+    #Verify donor is authenticated
     def authenticate_donor?(donor)
         current_donor.id == donor.id 
     end
 
-    #private method is internal to the implementation of a class, and it can only be called by other instance methods of the class or its subclasses. 
+    #Private methods are internal to the implementation of a class, and it can only be called by other instance methods of the class or its subclasses. 
     #Private methods are implicitly invoked on self, and may not be explicitly invoked on an object.
     private
     def require_logged_in
