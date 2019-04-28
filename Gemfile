@@ -15,7 +15,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -25,11 +24,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 
+#Password encryption:
+gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
+#OmniAuth strategy for Facebook
 gem 'omniauth-facebook'
+#OmniAuth strategy for GitHub (To be implemented later)
 gem 'omniauth-github'
+#Ensure that environment variables are correctly loaded into the ENV hash in a secure manner:
 gem 'dotenv-rails'
 
 # Use ActiveStorage variant
@@ -41,6 +44,8 @@ gem 'dotenv-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'thin'
+
+#Seed fake data to the database:
 gem 'faker'
 gem 'pry'
 gem 'jquery-rails'
@@ -64,6 +69,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
