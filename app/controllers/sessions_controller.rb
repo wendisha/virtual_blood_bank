@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
                     raise @donor.errors.full_messages.inspect
                 end
             end
-        #If user is not signing in through Facebook, search for existing account
+        #If donor is not signing in through Facebook, search for existing account
         else 
             @donor = Donor.find_by(username: params[:donor][:username])
             if @donor && @donor.authenticate(params[:donor][:password])
@@ -37,6 +37,7 @@ class SessionsController < ApplicationController
         end
     end
 
+    #Log donor out
     def destroy
         session.clear
         redirect_to root_path
