@@ -1,3 +1,6 @@
+This notes refer to the initial idea of the app, which had to be modified to meet the project requirements.
+This notes will be used as reference for future growth of the app.
+
 Description:
     -Virtual Blood Bank only handles whole blood donations for now, not Platelet, Plasma or Double Red Blood Cells donations. (freq: 56 days)
     -A user is able to log in as an donor (individual) or recipient (health care center)
@@ -58,17 +61,3 @@ Navigation Flow:
             •Recipient's Homepage
             -Link to Create a Profile (new user) or to Edit Profile (existing user)
             -Logout option
-
-Clarifications:
-    • Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
-    • You must include at least one class level ActiveRecord scope method. 
-        a. Your scope method must be chainable, meaning that you must use ActiveRecord Query methods within it (such as .where and .order) rather than native ruby methods (such as #find_all or #sort). #define the relationship between recipients and bloodtype (remember boolean example)
-    • You must include a nested new route with form that relates to the parent resource
-    • You must include a nested index or show route
-
-
-  Nested route example:
-    #recipients/1/bloodtype
-
-
-research FLEXBOX
