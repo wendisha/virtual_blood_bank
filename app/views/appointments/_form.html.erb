@@ -1,0 +1,22 @@
+<section class="container text-center">
+    <% if @donor %>
+        <%= form_for [@donor, @appointment] do |f| %>
+            <h4 class="font-weight-light"><strong><%= f.label :name, "Choose a Clinic:" %><br></strong></h4>
+            <%= f.collection_select(:clinic_id, @clinics, :id, :name, include_blank: true) %><br><br>
+            <h4 class="font-weight-light"><strong><%= f.label :date, "When would you like to donate?" %><br></strong></h4>
+            <%= f.date_field :date, min: Date.today %><br><br>
+            <h4 class="font-weight-light"><strong><%= f.label :time, "What time?" %><br></strong></h4>
+            <%= f.time_field :time %><br><br>
+            <%= f.submit %>
+        <% end %><br><br> 
+    <% else %>
+        <%= form_for [@clinic, @appointment] do |f| %>
+            <h4 class="font-weight-light"><strong><%= f.label :date, "When would you like to donate?" %><br></strong></h4>
+            <%= f.date_field :date, min: Date.today %><br><br>
+            <h4 class="font-weight-light"><strong><%= f.label :time, "What time?" %><br></strong></h4>
+            <%= f.time_field :time %><br><br>
+            <%= f.submit %>
+        <% end %><br><br>
+    <% end %>
+</section>
+
