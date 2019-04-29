@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
     before_action :require_logged_in
     before_action :current_donor
+    #make it so clinic is not automatically selected
 
     def index
         @donor = Donor.find(params[:donor_id]) 
@@ -14,7 +15,7 @@ class AppointmentsController < ApplicationController
             @appointment = Appointment.new( :clinic_id => params[:clinic_id], :donor_id => params[:donor_id])
         else
             @donor = Donor.find(params[:donor_id])
-            redirect_to root_path if !authenticate_donor?(@donor) #handle new issue!!
+            redirect_to root_path if !authenticate_donor?(@donor)
             @appointment = Appointment.new( :donor_id => params[:donor_id])
             @clinics = Clinic.all
         end
@@ -37,7 +38,39 @@ class AppointmentsController < ApplicationController
             if @appointment.save 
                 redirect_to (donor_appointment_path(@appointment.donor_id, @appointment))
             else
+                render plain: "There was an error!" #render new
+            end
+        end
+    end
+
+    def edit
+        @appointment = Appointment.find(params[:id])
+        if params[:clinic_id]
+            @clinic = Clinic.find(params[:clinic_id])
+            params[:donor_id] = current_donor.id
+        else
+            @donor = Donor.find(params[:donor_id])
+            redirect_to root_path if !authenticate_donor?(@donor)
+            @clinics = Clinic.all
+        end
+    end
+
+    def update
+        if params[:clinic_id]
+            @appointment = Appointment.find(params[:id])
+            @appointment.update(appointment_params)
+            if @appointment.save
+                redirect_to clinic_appointment_path(@appointment.clinic_id, @appointment)
+            else
                 render plain: "There was an error!"
+            end
+        else
+            @appointment = Appointment.find(params[:id])
+            @appointment.update(appointment_params)
+            if @appointment.save 
+                redirect_to (donor_appointment_path(@appointment.donor_id, @appointment))
+            else
+                render plain: "There was an error!" #render new
             end
         end
     end
@@ -59,6 +92,6 @@ class AppointmentsController < ApplicationController
 
     # whitelist the permitted params when sending form data to the db
     def appointment_params
-        params.require(:appointment).permit(:datetime, :donor_id, :clinic_id)
+        params.require(:appointment).permit(:date, :time, :donor_id, :clinic_id)
     end
 end
