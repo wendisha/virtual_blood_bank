@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy"
 
   resources :donors, except: [:new, :edit, :update] do
-    resources :appointments, only: [:new, :create, :show, :index]
+    resources :appointments, only: [:new, :create, :show, :index, :edit, :update]
   end 
 
   resources :clinics, only: [:index, :show] do
-    resources :appointments, only: [:new, :create, :show, :index]
+    resources :appointments, only: [:new, :create, :show, :index, :edit, :update]
   end 
 end
