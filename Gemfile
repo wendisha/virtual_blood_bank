@@ -35,6 +35,9 @@ gem 'omniauth-github'
 #Ensure that environment variables are correctly loaded into the ENV hash in a secure manner:
 gem 'dotenv-rails'
 
+#Making it easy to serialize models for client-side use
+gem 'active_model_serializers'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
