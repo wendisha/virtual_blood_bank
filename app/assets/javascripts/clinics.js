@@ -36,7 +36,9 @@ function Clinic(clinic) {
     this.state = clinic.state;
 }
 
+//Prototype function (similar to instance methods) to format our clinics
 Clinic.prototype.formatIndex = function() {
+    //Template strings
     let clinicHtml = `
     <h2>${this.name}</h2>
     `
