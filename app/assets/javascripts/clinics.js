@@ -19,8 +19,10 @@ const listenForClick = () => {
             .then(clinics => {
                 //Clear html to repaint the DOM
                 $('#app-container').html('')
+                //Iterate over all the clinics
                 clinics.forEach(clinic => {
-                    console.log(clinic);
+                    //Use constructor function to create clinic objects
+                    let newClinic = new Clinic(clinic);
                 })
             })
     });
