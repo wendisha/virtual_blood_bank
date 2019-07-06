@@ -2,8 +2,15 @@ class ClinicsController < ApplicationController
 
     #List all existing clinics
     def index
+        #Grab all clinics using ActiveRecord
         @clinics = Clinic.all
         @donor = current_donor.id
+        respond_to do |f|
+            #Render html for the clinic's index erb file
+            f.html {render :index}
+            #Get JSON representation of all of the clinics
+			f.json {render json: @clinics}
+		end
     end
 
     #List all existing clinics in the same state as the donor
