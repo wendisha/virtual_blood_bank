@@ -15,7 +15,8 @@
 
 <section class="container text-center" >
     <h3>Ready to make your next donation?</h3>
-    <h4 class="font-weight-light">Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h4><br>
+    <h4 class="font-weight-light">Click <%= link_to "here", new_donor_appointment_path(@donor) %> to make an appointment.</h4>
+    <h4 class="font-weight-light all_appointments"><%= link_to "See all of your appointments.", donor_appointments_path(@donor) %></h4><br><br>
     <h4><%= link_to "See available locations in your area.", donors_clinics_path %></h4>
     <h4 class="font-weight-light all_clinics"><%= link_to "See all clinics.", clinics_path %></h4><br><br>
 </section>
