@@ -19,6 +19,9 @@ const listenForClick = () => {
             .then(clinics => {
                 //Clear html to repaint the DOM
                 $('#app-container').html('')
+                clinics.forEach(clinic => {
+                    console.log(clinic);
+                })
             })
     });
 };
