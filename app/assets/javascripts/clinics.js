@@ -14,8 +14,10 @@ const listenForClick = () => {
         //Since we wrote the backend API, it will be resolved.
         fetch(`/clinics.json`)
             //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
-            .then(res => res.json())
-            //Return the data we got in a following then method
-            .then(data => console.log(data))
+            .then(response => response.json())
+            //Return the data we got in a following then method. Call it clinics, to be semantic
+            .then(clinics => {
+                $('#app-container').html('helloooooooooo')
+            })
     });
 };
