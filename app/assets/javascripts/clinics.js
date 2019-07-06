@@ -10,6 +10,7 @@ const listenForClick = () => {
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
         e.preventDefault();
+        //Allow url to update adding clinics at the end
         history.pushState(null, null, "clinics");
         //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
         //Since we wrote the backend API, it will be resolved.
@@ -43,7 +44,7 @@ function Clinic(clinic) {
 Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
-    <h2>${this.name}</h2>
+    <a href="clinics/${this.id}"><h3>${this.name}</h3></a>
     `
     return clinicHtml;
 }
