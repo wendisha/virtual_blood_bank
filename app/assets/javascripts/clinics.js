@@ -10,6 +10,6 @@ const listenForClick = () => {
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
         e.preventDefault();
-        console.log('tessssssssssst');
+        console.log(fetch `/clinics.json`);
     });
 }
