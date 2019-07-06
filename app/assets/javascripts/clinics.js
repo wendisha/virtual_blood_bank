@@ -37,5 +37,8 @@ function Clinic(clinic) {
 }
 
 Clinic.prototype.formatIndex = function() {
-
+    let clinicHtml = `
+    <h2>${this.name}</h2>
+    `
+    return clinicHtml;
 }
