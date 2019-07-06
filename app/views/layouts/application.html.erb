@@ -44,7 +44,9 @@
       </div>
     </header>
 
-    <%= yield %>
+    <div id="app-container">
+      <%= yield %>
+    </div>
 
     <% if logged_in? %>
       <section class="container text-center">

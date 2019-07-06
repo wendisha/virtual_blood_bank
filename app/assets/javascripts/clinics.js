@@ -10,9 +10,12 @@ const listenForClick = () => {
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
         e.preventDefault();
-        //Whenever we use fetch, we get back a promise that will be resolved or rejected. Since we wrote the backend API, it will be resolved.
+        //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
+        //Since we wrote the backend API, it will be resolved.
         fetch(`/clinics.json`)
+            //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
             .then(res => res.json())
+            //Return the data we got in a following then method
             .then(data => console.log(data))
     });
 };
