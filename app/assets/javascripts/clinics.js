@@ -10,6 +10,9 @@ const listenForClick = () => {
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
         e.preventDefault();
-        console.log(fetch `/clinics.json`);
+        //Whenever we use fetch, we get back a promise that will be resolved or rejected. Since we wrote the backend API, it will be resolved.
+        fetch(`/clinics.json`)
+            .then(res => res.json())
+            .then(data => console.log(data))
     });
-}
+};
