@@ -17,7 +17,8 @@ const listenForClick = () => {
             .then(response => response.json())
             //Return the data we got in a following then method. Call it clinics, to be semantic
             .then(clinics => {
-                $('#app-container').html('helloooooooooo')
+                //Clear html to repaint the DOM
+                $('#app-container').html('')
             })
     });
 };
