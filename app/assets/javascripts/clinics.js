@@ -36,6 +36,6 @@ function Clinic(clinic) {
     this.state = clinic.state;
 }
 
-Clinic.prototype.formatIndex = () => {
-    
+Clinic.prototype.formatIndex = function() {
+
 }
