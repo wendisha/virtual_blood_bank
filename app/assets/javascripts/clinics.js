@@ -23,6 +23,8 @@ const listenForClick = () => {
                 clinics.forEach(clinic => {
                     //Use constructor function to create clinic objects
                     let newClinic = new Clinic(clinic);
+                    let clinicContent = newClinic.formatIndex();
+                    $('#app-container').append(clinicContent);
                 })
             })
     });
@@ -38,7 +40,7 @@ function Clinic(clinic) {
 
 //Prototype function (similar to instance methods) to format our clinics
 Clinic.prototype.formatIndex = function() {
-    //Template strings
+    //Template strings to advoid strings concatenation
     let clinicHtml = `
     <h2>${this.name}</h2>
     `
