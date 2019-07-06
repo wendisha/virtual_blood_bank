@@ -5,6 +5,12 @@ class AppointmentsController < ApplicationController
 
     def index
         @donor = Donor.find(params[:donor_id]) 
+        respond_to do |f|
+            #Render html for the clinic's index erb file
+            f.html {render :index}
+            #Get JSON representation of all of the clinics
+			f.json {render json: @donor.appointments}
+		end
     end
 
     #Identify if nested resource is under clinic or donor, get appropiate parameters
