@@ -10,6 +10,7 @@ const listenForClick = () => {
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
         e.preventDefault();
+        history.pushState(null, null, "clinics");
         //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
         //Since we wrote the backend API, it will be resolved.
         fetch(`/clinics.json`)
