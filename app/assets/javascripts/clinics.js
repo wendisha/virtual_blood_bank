@@ -25,3 +25,11 @@ const listenForClick = () => {
             })
     });
 };
+
+//Constructor function (use response we get from server and use a JS Model Object)
+//Could have used a ES6 class
+function Clinic(clinic) {
+    this.id = clinic.id;
+    this.name = clinic.name;
+    this.state = clinic.state;
+}
