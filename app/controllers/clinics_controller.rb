@@ -28,5 +28,11 @@ class ClinicsController < ApplicationController
     def show
         @clinic = Clinic.find_by_id(params[:id])
         @donor = current_donor.id
+        respond_to do |f|
+            #Render html for the clinic's show erb file
+            f.html
+            #Get JSON representation of that specific clinic
+			f.json {render json: @clinic}
+		end
     end
 end
