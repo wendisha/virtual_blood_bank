@@ -24,9 +24,8 @@ const listenForClick = () => {
         // console.log($(this).attr('data-id'))
         let id = $(this).attr('data-id')
         fetch(`clinics/${id}.json`)
-            
             .then(response => response.json())
-        //     //Return the data we got in a following then method. Call it clinics, to be semantic
+            //Return the data we got in a following then method. Call it clinics, to be semantic
             .then(clinic => {
                 let newClinic = new Clinic(clinic);
                 let clinicContent = newClinic.formatShow();
