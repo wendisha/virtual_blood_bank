@@ -15,23 +15,7 @@ const listenForClick = () => {
         url = data + "clinics";
         history.pushState(null, null, url);
         //history.pushState(null, null, "clinics");
-        //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
-        //Since we wrote the backend API, it will be resolved.
-        fetch(`/clinics.json`)
-            //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
-            .then(response => response.json())
-            //Return the data we got in a following then method. Call it clinics, to be semantic
-            .then(clinics => {
-                //Clear html to repaint the DOM
-                $('#app-container').html('')
-                //Iterate over all the clinics
-                clinics.forEach(clinic => {
-                    //Use constructor function to create clinic objects
-                    let newClinic = new Clinic(clinic);
-                    let clinicContent = newClinic.formatIndex();
-                    $('#app-container').append(clinicContent);
-                })
-            })
+        getClinics();
     });
     
     $(document).on('click', '.show_link', function(e) {
@@ -76,4 +60,24 @@ Clinic.prototype.formatShow = function() {
     <h3>${this.state}</h3>
     `
     return clinicHtml;
+}
+
+const getClinics = () => {
+//Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
+//Since we wrote the backend API, it will be resolved.
+    fetch(`/clinics.json`)
+        //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
+        .then(response => response.json())
+        //Return the data we got in a following then method. Call it clinics, to be semantic
+        .then(clinics => {
+            //Clear html to repaint the DOM
+            $('#app-container').html('')
+            //Iterate over all the clinics
+            clinics.forEach(clinic => {
+                //Use constructor function to create clinic objects
+                let newClinic = new Clinic(clinic);
+                let clinicContent = newClinic.formatIndex();
+                $('#app-container').append(clinicContent);
+            })
+        })    
 }
