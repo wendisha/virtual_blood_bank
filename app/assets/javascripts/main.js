@@ -77,37 +77,3 @@ Clinic.prototype.formatShow = function() {
     `
     return clinicHtml;
 }
-
-// $(() => {
-//     listenForClick();
-// });
-
-// const listenForClick = () => {
-//     $('.all_appointments').on('click', (e) => {
-//         e.preventDefault();
-//         console.log('hellooooooooooo')
-//         // history.pushState(null, null, "appointments");
-//         console.log(fetch(`/appointments.json`))
-//         //     .then(response => response.json())
-//         //     .then(appointments => {
-//         //         $('#app-container').html('')
-//         //         appointments.forEach(appointment => {
-//         //              let newAppointment = new Appointment(appointment);
-//         //              let appointmentContent = newAppointment.formatIndex();
-//         //             $('#app-container').append(appointmentContent);
-//         //         })
-//         //     })
-//     });
-// };
-
-// // function Appointment(appointment) {
-// //     this.id = appointment.id;
-// //     this.date = appointment.date;
-// // }
-
-// // Appointment.prototype.formatIndex = function() {
-// //     let appointmentHtml = `
-// //     <a href="appointments/${this.id}"><h3>${this.date}</h3></a>
-// //     `
-// //     return appointmentHtml;
-// // }
