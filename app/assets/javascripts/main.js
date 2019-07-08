@@ -36,13 +36,17 @@ const listenForClick = () => {
     
     $(document).on('click', '.show_link', function(e) {
         e.preventDefault();
+        $('#app-container').html('')
         // console.log($(this).attr('data-id'))
         let id = $(this).attr('data-id')
         fetch(`clinics/${id}.json`)
+            
             .then(response => response.json())
         //     //Return the data we got in a following then method. Call it clinics, to be semantic
             .then(clinic => {
-             console.log(clinic)
+                let newClinic = new Clinic(clinic);
+                let clinicContent = newClinic.formatShow();
+                $('#app-container').append(clinicContent);
             })
     });
 };
@@ -60,6 +64,16 @@ Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
     <a href="clinics/${this.id}" data-id="${this.id}" class="show_link"><h3>${this.name}</h3></a>
+    `
+    return clinicHtml;
+}
+
+//Prototype function (similar to instance methods) to format a individual clinic
+Clinic.prototype.formatShow = function() {
+    //Template strings to advoid strings concatenation
+    let clinicHtml = `
+    <h3>${this.name}</h3>
+    <h3>${this.state}</h3>
     `
     return clinicHtml;
 }
