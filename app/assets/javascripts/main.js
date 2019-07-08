@@ -11,7 +11,10 @@ const listenForClick = () => {
         //Prevent default behavior
         e.preventDefault();
         //Allow url to update adding clinics at the end
-        history.pushState(null, null, "clinics");
+        const data = 'http://localhost:3000/'
+        url = data + "clinics";
+        history.pushState(null, null, url);
+        //history.pushState(null, null, "clinics");
         //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
         //Since we wrote the backend API, it will be resolved.
         fetch(`/clinics.json`)
