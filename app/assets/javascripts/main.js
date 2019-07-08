@@ -70,8 +70,7 @@ const getClinics = () => {
         .then(response => response.json())
         //Return the data we got in a following then method. Call it clinics, to be semantic
         .then(clinics => {
-            //Clear html to repaint the DOM
-            $('#app-container').html('')
+            clearDom();
             //Iterate over all the clinics
             clinics.forEach(clinic => {
                 //Use constructor function to create clinic objects
@@ -80,4 +79,9 @@ const getClinics = () => {
                 $('#app-container').append(clinicContent);
             })
         })    
+}
+
+//Clear html to repaint the DOM
+const clearDom = () => {
+    $('#app-container').html('');
 }
