@@ -33,6 +33,18 @@ const listenForClick = () => {
                 })
             })
     });
+    
+    $(document).on('click', '.show_link', function(e) {
+        e.preventDefault();
+        // console.log($(this).attr('data-id'))
+        let id = $(this).attr('data-id')
+        fetch(`clinics/${id}.json`)
+            .then(response => response.json())
+        //     //Return the data we got in a following then method. Call it clinics, to be semantic
+            .then(clinic => {
+             console.log(clinic)
+            })
+    });
 };
 
 //Constructor function (use response we get from server and use a JS Model Object)
@@ -47,7 +59,7 @@ function Clinic(clinic) {
 Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
-    <a href="clinics/${this.id}" class="show_link"><h3>${this.name}</h3></a>
+    <a href="clinics/${this.id}" data-id="${this.id}" class="show_link"><h3>${this.name}</h3></a>
     `
     return clinicHtml;
 }
