@@ -32,6 +32,11 @@ const listenForClick = () => {
                 $('#app-container').append(clinicContent);
             })
     });
+
+    $('#new_appointment').on("submit", (e) => {
+        e.preventDefault();
+        console.log('submitting apptttttttttttttttt')
+    })
 };
 
 //Constructor function (use response we get from server and use a JS Model Object)
