@@ -4,4 +4,5 @@ class AppointmentSerializer < ActiveModel::Serializer
 
   #add associations????
   belongs_to :donor
+  belongs_to :clinic
 end

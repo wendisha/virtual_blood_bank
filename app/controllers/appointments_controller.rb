@@ -34,7 +34,8 @@ class AppointmentsController < ApplicationController
             @appointment.clinic_id = params[:clinic_id]
             @appointment.donor_id = current_donor.id
             if @appointment.save
-                redirect_to clinic_appointment_path(@appointment.clinic_id, @appointment)
+                #redirect_to clinic_appointment_path(@appointment.clinic_id, @appointment)
+                render json: @appointment
             else
                 render plain: "There was an error!"
             end
@@ -42,7 +43,8 @@ class AppointmentsController < ApplicationController
             @appointment = Appointment.new(appointment_params)
             @appointment.donor_id = current_donor.id
             if @appointment.save 
-                redirect_to (donor_appointment_path(@appointment.donor_id, @appointment))
+                #redirect_to (donor_appointment_path(@appointment.donor_id, @appointment))
+                render json: @appointment
             else
                 render plain: "There was an error!" #render new
             end
