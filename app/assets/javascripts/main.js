@@ -37,16 +37,19 @@ const listenForClick = () => {
         e.preventDefault();
         //Grab the values entered in the form, using Serialize:
         const values = $( this ).serialize()
-        $.post('/appointments', values).done(function(data) {
-            //console.log(data)
-            $('form').html('')
-            $('form').html('<h1>New Appointment</h1>')
-        })
-
-
+        //console.log(values)
+        //let id = $(this).attr('donor_id')
+        // //console.log(id);
+        var donorId = $('.all_appointments').data('donor_id')
+        console.log (donorId)
+        // $.post(`/donors/${donorId}/appointment`, values).done(function(data) {  //GETTING UNDEFINED FOR ID!!!!!
+        // //console.log(data)
+        //     $('#app-container').html('')
+        //     $('#app-container').html('<h1>New Appointment</h1>')
+        // })
     });
 };
-
+ 
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
 function Clinic(clinic) {
