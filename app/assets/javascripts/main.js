@@ -36,10 +36,11 @@ const listenForClick = () => {
     $("form").on("submit", function(e) {            //Why not with the new_appointment id?????????????????????
         e.preventDefault();
         //Grab the values entered in the form, using Serialize:
-        const values = $( this ).serialize();
-        $.post('/appointments', values);
-        .done(function(data) {
-            
+        const values = $( this ).serialize()
+        $.post('/appointments', values).done(function(data) {
+            //console.log(data)
+            $('form').html('')
+            $('form').html('<h1>New Appointment</h1>')
         })
 
 
