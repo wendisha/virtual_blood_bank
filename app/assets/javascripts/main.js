@@ -33,10 +33,17 @@ const listenForClick = () => {
             })
     });
 
-    $('#new_appointment').on("submit", (e) => {
+    $("form").on("submit", function(e) {            //Why not with the new_appointment id?????????????????????
         e.preventDefault();
-        console.log('submitting apptttttttttttttttt')
-    })
+        //Grab the values entered in the form, using Serialize:
+        const values = $( this ).serialize();
+        $.post('/appointments', values);
+        .done(function(data) {
+            
+        })
+
+
+    });
 };
 
 //Constructor function (use response we get from server and use a JS Model Object)
