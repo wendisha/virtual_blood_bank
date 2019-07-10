@@ -105,6 +105,16 @@ Clinic.prototype.formatShow = function() {
     return clinicHtml;
 }
 
+//Prototype function (similar to instance methods) to format a individual appointment
+Appointment.prototype.formatAppointment = function() {
+    //Template strings to advoid strings concatenation
+    let appointmentHtml = `
+    <h3>${this.date}</h3>
+    <h3>${this.time}</h3>
+    `
+    return appointmentHtml;
+}
+
 const getClinics = () => {
 //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
 //Since we wrote the backend API, it will be resolved.
