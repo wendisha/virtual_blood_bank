@@ -47,6 +47,8 @@ const listenForClick = () => {
             $('#app-container').html('')
             //$('#app-container').html('<h1>New Appointment</h1>')
             const newAppointment = new Appointment(data)
+            const htmlToAdd = newAppointment.formatAppointment()
+            $('#app-container').append(htmlToAdd)
         })
     });
 
