@@ -37,36 +37,34 @@ const listenForClick = () => {
             })
     });
 
-    // $("form").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
-    //     e.preventDefault();
+    $("form").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
+        e.preventDefault();
     //     //Grab the values entered in the form, using Serialize:
-    //     const values = $( this ).serialize()
-    //     //console.log(values)
-    //     //let id = $(this).attr('donor_id')
-    //     // // //console.log(id);
-        
-    //     console.log(donorId())
-    //     // $.post(`/donors/${donorId}/appointment`, values).done(function(data) {  //GETTING UNDEFINED FOR ID!!!!!
-    //     // //console.log(data)
-    //     //     $('#app-container').html('')
-    //     //     $('#app-container').html('<h1>New Appointment</h1>')
-    //     // })
-    // });
-    $(document).on('submit', '#new-form', function(e) {
-        e.preventDefault()
-        //console.log('event preventend')
-        const values = $(this).serialize()
-        //console.log(values)
+        const values = $( this ).serialize()
         let donorId = $('.apptDonorId').data('appt-donor-id')
-        //console.log(donorId)
-            $.post(`/donors/${donorId}/appointments`, values).done(function(data){
-             console.log(data)
-        //     const newEquipment = new Equipment(data)    
-        //     const addToHtml = newEquipment.formatShow()
-        //     $('#new-equipment').html(addToHtml)
-        //     console.log('rendered new equipment')
+        $.post(`/donors/${donorId}/appointments`, values).done(function(data){
+            console.log(data)
+            $('#app-container').html('')
+            $('#app-container').html('<h1>New Appointment</h1>')
         })
-    })
+    });
+
+
+    // $(document).on('submit', '#new-form', function(e) {
+    //     e.preventDefault()
+    //     //console.log('event preventend')
+    //     const values = $(this).serialize()
+    //     //console.log(values)
+    //     let donorId = $('.apptDonorId').data('appt-donor-id')
+    //     //console.log(donorId)
+    //         $.post(`/donors/${donorId}/appointments`, values).done(function(data){
+    //          console.log(data)
+    //     //      const newEquipment = new Equipment(data)    
+    //     //     const addToHtml = newEquipment.formatShow()
+    //     //     $('#new-equipment').html(addToHtml)
+    //     //     console.log('rendered new equipment')
+    //     })
+    // })
     
 };
  
