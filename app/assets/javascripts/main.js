@@ -37,7 +37,7 @@ const listenForClick = () => {
             })
     });
 
-    $("form").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
+    $(".new_appointment").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
         e.preventDefault();
     //     //Grab the values entered in the form, using Serialize:
         const values = $( this ).serialize()
@@ -111,6 +111,8 @@ Clinic.prototype.formatShow = function() {
 Appointment.prototype.formatAppointment = function() {
     //Template strings to advoid strings concatenation
     let appointmentHtml = `
+    <h3>${this.donor_id}</h3>
+    <h3>${this.clinic_id}</h3>
     <h3>${this.date}</h3>
     <h3>${this.time}</h3>
     `

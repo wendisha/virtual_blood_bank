@@ -40,12 +40,12 @@ class DonorsController < ApplicationController
 
     def show
         @donor = Donor.find_by_id(params[:id])
-        respond_to do |f|
-            #Render html for the clinic's show erb file
-            f.html
-            #Get JSON representation of that specific clinic
-			f.json {render json: @donor}
-		end
+        # respond_to do |f|
+        #     #Render html for the clinic's show erb file
+        #     f.html
+        #     #Get JSON representation of that specific clinic
+		# 	f.json {render json: @donor}
+		# end
     end
  
     #Whitelist the permitted params when sending form data to the db
