@@ -4,6 +4,10 @@ $(() => {
     listenForClick();
 });
 
+// let donorId = function retrieveDonorId(){
+//     console.log($('#all_appointments').data('donor-id'))
+// }
+  
 const listenForClick = () => {
     //The $ is a shortcut for jQuery, and provides an interface to the library.
     //Listen for click on link with all_clinics class, and use callback function that takes an e (event) parameter
@@ -33,23 +37,40 @@ const listenForClick = () => {
             })
     });
 
-    $("form").on("submit", function(e) {            //Why not with the new_appointment id?????????????????????
-        e.preventDefault();
-        //Grab the values entered in the form, using Serialize:
-        const values = $( this ).serialize()
+    // $("form").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
+    //     e.preventDefault();
+    //     //Grab the values entered in the form, using Serialize:
+    //     const values = $( this ).serialize()
+    //     //console.log(values)
+    //     //let id = $(this).attr('donor_id')
+    //     // // //console.log(id);
+        
+    //     console.log(donorId())
+    //     // $.post(`/donors/${donorId}/appointment`, values).done(function(data) {  //GETTING UNDEFINED FOR ID!!!!!
+    //     // //console.log(data)
+    //     //     $('#app-container').html('')
+    //     //     $('#app-container').html('<h1>New Appointment</h1>')
+    //     // })
+    // });
+    $(document).on('submit', '#new-form', function(e) {
+        e.preventDefault()
+        //console.log('event preventend')
+        const values = $(this).serialize()
         //console.log(values)
-        //let id = $(this).attr('donor_id')
-        // //console.log(id);
-        var donorId = $('.all_appointments').data('donor_id')
-        console.log (donorId)
-        // $.post(`/donors/${donorId}/appointment`, values).done(function(data) {  //GETTING UNDEFINED FOR ID!!!!!
-        // //console.log(data)
-        //     $('#app-container').html('')
-        //     $('#app-container').html('<h1>New Appointment</h1>')
-        // })
-    });
+        let donorId = $('.apptDonorId').data('appt-donor-id')
+        //console.log(donorId)
+            $.post(`/donors/${donorId}/appointments`, values).done(function(data){
+             console.log(data)
+        //     const newEquipment = new Equipment(data)    
+        //     const addToHtml = newEquipment.formatShow()
+        //     $('#new-equipment').html(addToHtml)
+        //     console.log('rendered new equipment')
+        })
+    })
+    
 };
  
+
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
 function Clinic(clinic) {
