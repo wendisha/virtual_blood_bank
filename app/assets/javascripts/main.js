@@ -77,6 +77,14 @@ function Clinic(clinic) {
     this.state = clinic.state;
 }
 
+function Appointment(appointment) {
+    this.id = appointment.id;
+    this.donor_id = appointment.donor_id;
+    this.clinic_id = appointment.clinic_id;
+    this.date = appointment.date;
+    this.time = appointment.time;
+}
+
 //Prototype function (similar to instance methods) to format our clinics
 Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
