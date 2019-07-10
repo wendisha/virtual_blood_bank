@@ -43,9 +43,10 @@ const listenForClick = () => {
         const values = $( this ).serialize()
         let donorId = $('.apptDonorId').data('appt-donor-id')
         $.post(`/donors/${donorId}/appointments`, values).done(function(data){
-            console.log(data)
+            //console.log(data)
             $('#app-container').html('')
-            $('#app-container').html('<h1>New Appointment</h1>')
+            //$('#app-container').html('<h1>New Appointment</h1>')
+            const newAppointment = new Appointment(data)
         })
     });
 
