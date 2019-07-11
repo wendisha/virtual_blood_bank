@@ -91,10 +91,9 @@ function Appointment(appointment) {
 Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
-    <section class="jumbotron text-center" >
-        <h2 class="display-4">Clinics</h2>
-    </section><br>
-    <a href="clinics/${this.id}" data-id="${this.id}" class="show_link"><h3>${this.name}</h3></a>
+    <section class="container text-left">
+        <h4 class="font-weight-light"><strong>Clinic: </strong><a href="clinics/${this.id}" data-id="${this.id}" class="show_link">${this.name}</a></h4>
+    </section>
     `
     return clinicHtml;
 }
@@ -108,6 +107,15 @@ Clinic.prototype.formatShow = function() {
     `
     return clinicHtml;
 }
+
+// Clinic.prototype.addFormattedTitle = function() {
+//     let clinicHtml = `
+//     <section class="jumbotron text-center" >
+//         <h2 class="display-4">Clinics</h2>
+//     </section><br>
+//     `
+//     return clinicHtml;
+// }
 
 //Prototype function (similar to instance methods) to format a individual appointment
 Appointment.prototype.formatAppointment = function() {
