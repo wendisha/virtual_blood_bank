@@ -110,10 +110,15 @@ Clinic.prototype.formatShow = function() {
 Appointment.prototype.formatAppointment = function() {
     //Template strings to advoid strings concatenation
     let appointmentHtml = `
-    <h4 class="font-weight-light"><strong>Username: ${this.donor_id}<br></strong></h4>
-    <h4 class="font-weight-light"><strong>Clinic: ${this.clinic_id}<br></strong></h4>
-    <h4 class="font-weight-light"><strong>Date: ${this.date}<br></strong></h4>
-    <h4 class="font-weight-light"><strong>Time: ${this.time}<br></strong></h4>
+    <section class="jumbotron text-center">
+        <h2 class="display-4">Appointment's Details</h2>
+    </section><br>
+    <section class="container">
+        <h4 class="font-weight-light"><strong>Username: ${this.donor_id}<br></strong></h4>
+        <h4 class="font-weight-light"><strong>Clinic: ${this.clinic_id}<br></strong></h4>
+        <h4 class="font-weight-light"><strong>Date: ${this.date}<br></strong></h4>
+        <h4 class="font-weight-light"><strong>Time: ${this.time}<br></strong></h4>
+    </section><br>
     `
     return appointmentHtml;
 }
