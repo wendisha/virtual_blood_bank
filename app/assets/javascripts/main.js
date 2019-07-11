@@ -91,6 +91,9 @@ function Appointment(appointment) {
 Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
+    <section class="jumbotron text-center" >
+        <h2 class="display-4">Clinics</h2>
+    </section><br>
     <a href="clinics/${this.id}" data-id="${this.id}" class="show_link"><h3>${this.name}</h3></a>
     `
     return clinicHtml;
