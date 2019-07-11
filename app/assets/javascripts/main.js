@@ -42,7 +42,7 @@ const listenForClick = () => {
     //     //Grab the values entered in the form, using Serialize:
         const values = $( this ).serialize()
         let donorId = $('.apptDonorId').data('appt-donor-id')
-        $.post(`/donors/${donorId}/appointments`, values).done(function(data){
+        $.post(`/donors/${donorId}/appointments`, values).done(function(data) {
             //console.log(data)
             $('#app-container').html('')
             //$('#app-container').html('<h1>New Appointment</h1>')
@@ -70,7 +70,6 @@ const listenForClick = () => {
     // })
     
 };
- 
 
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
@@ -111,10 +110,10 @@ Clinic.prototype.formatShow = function() {
 Appointment.prototype.formatAppointment = function() {
     //Template strings to advoid strings concatenation
     let appointmentHtml = `
-    <h3>${this.donor_id}</h3>
-    <h3>${this.clinic_id}</h3>
-    <h3>${this.date}</h3>
-    <h3>${this.time}</h3>
+    <h4 class="font-weight-light"><strong>Username: ${this.donor_id}<br></strong></h4>
+    <h4 class="font-weight-light"><strong>Clinic: ${this.clinic_id}<br></strong></h4>
+    <h4 class="font-weight-light"><strong>Date: ${this.date}<br></strong></h4>
+    <h4 class="font-weight-light"><strong>Time: ${this.time}<br></strong></h4>
     `
     return appointmentHtml;
 }
@@ -137,6 +136,19 @@ const getClinics = () => {
             })
         })    
 }
+
+// const getDonorName = () => {
+//     fetch(`/clinics.json`)
+//         .then(response => response.json())
+//         .then(clinics => {
+//             clearDom();
+//             clinics.forEach(clinic => {
+//                 let newClinic = new Clinic(clinic);
+//                 let clinicContent = newClinic.formatIndex();
+//                 $('#app-container').append(clinicContent);
+//             })
+//         })    
+// }
 
 //Clear html to repaint the DOM
 const clearDom = () => {
