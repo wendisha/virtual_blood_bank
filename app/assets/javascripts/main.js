@@ -1,7 +1,5 @@
 const homeUrl = 'http://localhost:3000/'
 
-///call method to render all appointments on the donors show page when the doc is ready 
-
 //Document ready function to hijack the click or submit events
 //The $ is a shortcut for jQuery, and provides an interface to the library.
 $(() => {
@@ -9,6 +7,11 @@ $(() => {
     listenForClinic();
     listenForNewApptSubmission();
 });
+
+//Clear html to repaint the DOM
+const clearDom = () => {
+    $('#app-container').html('');
+}
 
 const listenForAllClinicsClick = () => {  
     //Listen for click on link with all_clinics class, and use callback function that takes an e (event) parameter
@@ -58,29 +61,12 @@ const listenForNewApptSubmission = () => {
     });
 }
 
-const getAppointments = () => {
-    let donorId = $('.donor-show').data('donor-id')
-    fetch (`/donors/${donorId}/appointments.json`)
-    .then(response => response.json())
-    .then(appointments => {
-        //clearDom();
-        //Iterate over all the clinics
-        appointments.forEach(appointment => {
-            //Use constructor function to create clinic objects
-            let newAppt = new Appointment(appointment);
-            let appointmentHtml = newAppt.formatAppointmentsIndex();
-            $('#show-appointments').append(appointmentHtml);
-        })
-    })    
-}
-
 $(document).on('ready', 'show-appointments', function(e) {
     //Prevent default behavior
     e.preventDefault();    
 });
 
 //Constructor function (use response we get from server and use a JS Model Object)
-//Could have used a ES6 class
 function Clinic(clinic) {
     this.id = clinic.id;
     this.name = clinic.name;
@@ -106,17 +92,8 @@ Clinic.prototype.formatIndex = function() {
     return clinicHtml;
 }
 
-Appointment.prototype.formatAppointmentsIndex = function() {
-    //Template strings to advoid strings concatenation
-    let appointmentHtml = `
-    <section class="container text-left">
-        <h5 class="font-weight-light text-center"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5>
-    </section>
-    `
-    return appointmentHtml;
-}
+//Prototype function (similar to instance methods):
 
-//Prototype function (similar to instance methods) to format a individual clinic
 Clinic.prototype.formatShow = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
@@ -130,9 +107,7 @@ Clinic.prototype.formatShow = function() {
     return clinicHtml;
 }
 
-//Prototype function (similar to instance methods) to format a individual appointment
 Appointment.prototype.formatAppointment = function() {
-    //Template strings to advoid strings concatenation
     let appointmentHtml = `
     <section class="jumbotron text-center">
         <h2 class="display-4">Appointment's Details</h2>
@@ -143,6 +118,15 @@ Appointment.prototype.formatAppointment = function() {
         <h4 class="font-weight-light"><strong>Date: ${this.date}<br></strong></h4>
         <h4 class="font-weight-light"><strong>Time: ${this.time}<br></strong></h4>
     </section><br>
+    `
+    return appointmentHtml;
+}
+
+Appointment.prototype.formatAppointmentsIndex = function() {
+    let appointmentHtml = `
+    <section class="container text-left">
+        <h5 class="font-weight-light text-center"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5>
+    </section>
     `
     return appointmentHtml;
 }
@@ -166,7 +150,15 @@ const getClinics = () => {
         })    
 }
 
-//Clear html to repaint the DOM
-const clearDom = () => {
-    $('#app-container').html('');
+const getAppointments = () => {
+    let donorId = $('.donor-show').data('donor-id')
+    fetch (`/donors/${donorId}/appointments.json`)
+    .then(response => response.json())
+    .then(appointments => {
+        appointments.forEach(appointment => {
+            let newAppt = new Appointment(appointment);
+            let appointmentHtml = newAppt.formatAppointmentsIndex();
+            $('#show-appointments').append(appointmentHtml);
+        })
+    })    
 }
