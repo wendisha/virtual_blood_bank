@@ -110,7 +110,7 @@ Appointment.prototype.formatAppointmentsIndex = function() {
     //Template strings to advoid strings concatenation
     let appointmentHtml = `
     <section class="container text-left">
-        <h4 class="font-weight-light"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h4>
+        <h5 class="font-weight-light text-center"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5>
     </section>
     `
     return appointmentHtml;
