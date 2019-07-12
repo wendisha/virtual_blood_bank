@@ -1,15 +1,16 @@
-//Document ready function to hijack the click event on the See All Clinics link on the donor's show page
-//Arrow function!
 const homeUrl = 'http://localhost:3000/'
 
 ///call method to render all appointments on the donors show page when the doc is ready 
 
+//Document ready function to hijack the click event on the See All Clinics link on the donor's show page
+//The $ is a shortcut for jQuery, and provides an interface to the library.
 $(() => {
-    listenForClick();
+    listenForAllClinicsClick();
+    listenForClinic();
+    listenForNewApptSubmission();
 });
-  
-const listenForClick = () => {
-    //The $ is a shortcut for jQuery, and provides an interface to the library.
+
+const listenForAllClinicsClick = () => {  
     //Listen for click on link with all_clinics class, and use callback function that takes an e (event) parameter
     $('.all_clinics').on('click', (e) => {
         //Prevent default behavior
@@ -20,13 +21,10 @@ const listenForClick = () => {
         history.pushState(null, null, url);
         //history.pushState(null, null, "clinics");
         getClinics();
-    });
+    });  
+};
 
-    $(document).on('ready', 'show-appointments', function(e) {
-        //Prevent default behavior
-        e.preventDefault();    
-    });
-    
+const listenForClinic = () => {
     $(document).on('click', '.show_link', function(e) {
         e.preventDefault();
         $('#app-container').html('')
@@ -43,8 +41,10 @@ const listenForClick = () => {
                 $('#app-container').append(clinicContent);
             })
     });
+}
 
-    $(".new_appointment").on("submit", function(e) {           //Why not with the new_appointment id?????????????????????
+const listenForNewApptSubmission = () => {
+    $(".new_appointment").on("submit", function(e) {      
         e.preventDefault();
     //     //Grab the values entered in the form, using Serialize:
         const values = $( this ).serialize()
@@ -58,7 +58,7 @@ const listenForClick = () => {
             $('#app-container').append(htmlToAdd)
         })
     });
-};
+}
 
 const getAppointments = () => {
     let donorId = $('.donor-show').data('donor-id')
@@ -75,6 +75,15 @@ const getAppointments = () => {
         })
     })    
 }
+
+$(document).on('ready', 'show-appointments', function(e) {
+    //Prevent default behavior
+    e.preventDefault();    
+});
+
+
+
+
 
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
