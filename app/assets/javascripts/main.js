@@ -28,32 +28,28 @@ const listenForAllClinicsClick = () => {
 const listenForClinic = () => {
     $(document).on('click', '.show_link', function(e) {
         e.preventDefault();
-        $('#app-container').html('')
-        // console.log($(this).attr('data-id'))
+        clearDom();
         let id = $(this).attr('data-id')
         let url = homeUrl + "clinics" + id;
         history.pushState(null, null, url)
         fetch(`clinics/${id}.json`)
-            .then(response => response.json())
-            //Return the data we got in a following then method. Call it clinics, to be semantic
-            .then(clinic => {
-                let newClinic = new Clinic(clinic);
-                let clinicContent = newClinic.formatShow();
-                $('#app-container').append(clinicContent);
-            })
+        .then(response => response.json())
+        .then(clinic => {
+            let newClinic = new Clinic(clinic);
+            let clinicContent = newClinic.formatShow();
+            $('#app-container').append(clinicContent);
+        })
     });
 }
 
 const listenForNewApptSubmission = () => {
     $(".new_appointment").on("submit", function(e) {      
         e.preventDefault();
-    //     //Grab the values entered in the form, using Serialize:
+        //Grab the values entered in the form, using Serialize:
         const values = $( this ).serialize()
         let donorId = $('.apptDonorId').data('appt-donor-id')
         $.post(`/donors/${donorId}/appointments`, values).done(function(data) {
-            //console.log(data)
             $('#app-container').html('')
-            //$('#app-container').html('<h1>New Appointment</h1>')
             const newAppointment = new Appointment(data)
             const htmlToAdd = newAppointment.formatAppointment()
             $('#app-container').append(htmlToAdd)
@@ -61,10 +57,12 @@ const listenForNewApptSubmission = () => {
     });
 }
 
-$(document).on('ready', 'show-appointments', function(e) {
-    //Prevent default behavior
-    e.preventDefault();    
-});
+// const showAppts = () => {
+//     $(document).on('ready', 'show-appointments', function(e) {
+//         //Prevent default behavior
+//         //e.preventDefault();    
+//     });
+// }
 
 //Constructor function (use response we get from server and use a JS Model Object)
 function Clinic(clinic) {
@@ -92,10 +90,8 @@ Clinic.prototype.formatIndex = function() {
     return clinicHtml;
 }
 
-//Prototype function (similar to instance methods):
-
+//Prototype functions (similar to instance methods):
 Clinic.prototype.formatShow = function() {
-    //Template strings to advoid strings concatenation
     let clinicHtml = `
     <section class="jumbotron text-center" >
         <h2 class="display-4">Clinic's Details</h2>
@@ -149,6 +145,11 @@ const getClinics = () => {
             })
         })    
 }
+
+// const getClinic = () => {
+//     let id = $(this).attr('data-id')
+
+// }
 
 const getAppointments = () => {
     let donorId = $('.donor-show').data('donor-id')
