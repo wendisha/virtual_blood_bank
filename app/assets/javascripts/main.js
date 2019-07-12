@@ -2,7 +2,7 @@ const homeUrl = 'http://localhost:3000/'
 
 ///call method to render all appointments on the donors show page when the doc is ready 
 
-//Document ready function to hijack the click event on the See All Clinics link on the donor's show page
+//Document ready function to hijack the click or submit events
 //The $ is a shortcut for jQuery, and provides an interface to the library.
 $(() => {
     listenForAllClinicsClick();
@@ -16,10 +16,8 @@ const listenForAllClinicsClick = () => {
         //Prevent default behavior
         e.preventDefault();
         //Allow url to update adding clinics at the end
-        //const data = 'http://localhost:3000/'
         let url = homeUrl + "clinics";
         history.pushState(null, null, url);
-        //history.pushState(null, null, "clinics");
         getClinics();
     });  
 };
@@ -80,10 +78,6 @@ $(document).on('ready', 'show-appointments', function(e) {
     //Prevent default behavior
     e.preventDefault();    
 });
-
-
-
-
 
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
