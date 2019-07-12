@@ -99,6 +99,7 @@ Clinic.prototype.formatShow = function() {
     <section class="container">
         <h4 class="font-weight-light"><strong>Name: </strong>${this.name}</h4>
         <h4 class="font-weight-light"><strong>State: </strong>${this.state}</h4><br><br>
+        <h4 class="font-weight-light"><a href="/clinics"><strong>Go Back To See All Clinics</strong></a></h4>
     `
     return clinicHtml;
 }
