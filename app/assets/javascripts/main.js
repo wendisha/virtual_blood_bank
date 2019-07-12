@@ -7,10 +7,6 @@ const homeUrl = 'http://localhost:3000/'
 $(() => {
     listenForClick();
 });
-
-// let donorId = function retrieveDonorId(){
-//     console.log($('#all_appointments').data('donor-id'))
-// }
   
 const listenForClick = () => {
     //The $ is a shortcut for jQuery, and provides an interface to the library.
@@ -28,14 +24,7 @@ const listenForClick = () => {
 
     $(document).on('ready', 'show-appointments', function(e) {
         //Prevent default behavior
-        e.preventDefault();
-
-        //Allow url to update adding clinics at the end
-        //const data = 'http://localhost:3000/'
-        // let url = homeUrl + "clinics";
-        // history.pushState(null, null, url);
-        //history.pushState(null, null, "clinics");
-    
+        e.preventDefault();    
     });
     
     $(document).on('click', '.show_link', function(e) {
@@ -85,8 +74,6 @@ const getAppointments = () => {
             $('#show-appointments').append(appointmentHtml);
         })
     })    
-
- 
 }
 
 //Constructor function (use response we get from server and use a JS Model Object)
@@ -140,15 +127,6 @@ Clinic.prototype.formatShow = function() {
     return clinicHtml;
 }
 
-// Clinic.prototype.addFormattedTitle = function() {
-//     let clinicHtml = `
-//     <section class="jumbotron text-center" >
-//         <h2 class="display-4">Clinics</h2>
-//     </section><br>
-//     `
-//     return clinicHtml;
-// }
-
 //Prototype function (similar to instance methods) to format a individual appointment
 Appointment.prototype.formatAppointment = function() {
     //Template strings to advoid strings concatenation
@@ -185,27 +163,7 @@ const getClinics = () => {
         })    
 }
 
-
-
-
-// const getDonorName = () => {
-//     fetch(`/donors.json`)
-//         .then(response => response.json())
-//         .then(clinics => {
-//             clearDom();
-//             clinics.forEach(clinic => {
-//                 let newClinic = new Clinic(clinic);
-//                 let clinicContent = newClinic.formatIndex();
-//                 $('#app-container').append(clinicContent);
-//             })
-//         })    
-// }
-
 //Clear html to repaint the DOM
 const clearDom = () => {
     $('#app-container').html('');
 }
-
-// function testShowPage () {
-//     console.log("test worked")
-// }
