@@ -1,5 +1,9 @@
 //Document ready function to hijack the click event on the See All Clinics link on the donor's show page
 //Arrow function!
+const homeUrl = 'http://localhost:3000/'
+
+///call method to render all appointments on the donors show page when the doc is ready 
+
 $(() => {
     listenForClick();
 });
@@ -15,11 +19,23 @@ const listenForClick = () => {
         //Prevent default behavior
         e.preventDefault();
         //Allow url to update adding clinics at the end
-        const data = 'http://localhost:3000/'
-        url = data + "clinics";
+        //const data = 'http://localhost:3000/'
+        let url = homeUrl + "clinics";
         history.pushState(null, null, url);
         //history.pushState(null, null, "clinics");
         getClinics();
+    });
+
+    $(document).on('ready', 'show-appointments', function(e) {
+        //Prevent default behavior
+        e.preventDefault();
+
+        //Allow url to update adding clinics at the end
+        //const data = 'http://localhost:3000/'
+        // let url = homeUrl + "clinics";
+        // history.pushState(null, null, url);
+        //history.pushState(null, null, "clinics");
+    
     });
     
     $(document).on('click', '.show_link', function(e) {
@@ -27,6 +43,8 @@ const listenForClick = () => {
         $('#app-container').html('')
         // console.log($(this).attr('data-id'))
         let id = $(this).attr('data-id')
+        let url = homeUrl + "clinics" + id;
+        history.pushState(null, null, url)
         fetch(`clinics/${id}.json`)
             .then(response => response.json())
             //Return the data we got in a following then method. Call it clinics, to be semantic
@@ -51,25 +69,25 @@ const listenForClick = () => {
             $('#app-container').append(htmlToAdd)
         })
     });
-
-
-    // $(document).on('submit', '#new-form', function(e) {
-    //     e.preventDefault()
-    //     //console.log('event preventend')
-    //     const values = $(this).serialize()
-    //     //console.log(values)
-    //     let donorId = $('.apptDonorId').data('appt-donor-id')
-    //     //console.log(donorId)
-    //         $.post(`/donors/${donorId}/appointments`, values).done(function(data){
-    //          console.log(data)
-    //     //      const newEquipment = new Equipment(data)    
-    //     //     const addToHtml = newEquipment.formatShow()
-    //     //     $('#new-equipment').html(addToHtml)
-    //     //     console.log('rendered new equipment')
-    //     })
-    // })
-    
 };
+
+const getAppointments = () => {
+    let donorId = $('.donor-show').data('donor-id')
+    fetch (`/donors/${donorId}/appointments.json`)
+    .then(response => response.json())
+    .then(appointments => {
+        //clearDom();
+        //Iterate over all the clinics
+        appointments.forEach(appointment => {
+            //Use constructor function to create clinic objects
+            let newAppt = new Appointment(appointment);
+            let appointmentHtml = newAppt.formatAppointmentsIndex();
+            $('#show-appointments').append(appointmentHtml);
+        })
+    })    
+
+ 
+}
 
 //Constructor function (use response we get from server and use a JS Model Object)
 //Could have used a ES6 class
@@ -92,18 +110,32 @@ Clinic.prototype.formatIndex = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
     <section class="container text-left">
-        <h4 class="font-weight-light"><strong>Clinic: </strong><a href="clinics/${this.id}" data-id="${this.id}" class="show_link">${this.name}</a></h4>
+        <h4 class="font-weight-light"><strong>Clinic: </strong><a href="/clinics/${this.id}" data-id="${this.id}" class="show_link">${this.name}</a></h4>
     </section>
     `
     return clinicHtml;
+}
+
+Appointment.prototype.formatAppointmentsIndex = function() {
+    //Template strings to advoid strings concatenation
+    let appointmentHtml = `
+    <section class="container text-left">
+        <h4 class="font-weight-light"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h4>
+    </section>
+    `
+    return appointmentHtml;
 }
 
 //Prototype function (similar to instance methods) to format a individual clinic
 Clinic.prototype.formatShow = function() {
     //Template strings to advoid strings concatenation
     let clinicHtml = `
-    <h3>${this.name}</h3>
-    <h3>${this.state}</h3>
+    <section class="jumbotron text-center" >
+        <h2 class="display-4">Clinic's Details</h2>
+    </section><br>
+    <section class="container">
+        <h4 class="font-weight-light"><strong>Name: </strong>${this.name}</h4>
+        <h4 class="font-weight-light"><strong>State: </strong>${this.state}</h4><br><br>
     `
     return clinicHtml;
 }
@@ -153,8 +185,11 @@ const getClinics = () => {
         })    
 }
 
+
+
+
 // const getDonorName = () => {
-//     fetch(`/clinics.json`)
+//     fetch(`/donors.json`)
 //         .then(response => response.json())
 //         .then(clinics => {
 //             clearDom();
@@ -170,3 +205,7 @@ const getClinics = () => {
 const clearDom = () => {
     $('#app-container').html('');
 }
+
+// function testShowPage () {
+//     console.log("test worked")
+// }

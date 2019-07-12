@@ -4,7 +4,8 @@ class AppointmentsController < ApplicationController
     #make it so clinic is not automatically selected
 
     def index
-        @donor = Donor.find(params[:donor_id]) 
+        @donor = Donor.find(params[:donor_id])
+        @donor = current_donor
         respond_to do |f|
             #Render html for the clinic's index erb file
             f.html #{render :index}

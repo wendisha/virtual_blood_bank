@@ -30,7 +30,7 @@ class ClinicsController < ApplicationController
         @donor = current_donor.id
         respond_to do |f|
             #Render html for the clinic's show erb file
-            f.html
+            f.html {render :show}
             #Get JSON representation of that specific clinic
 			f.json {render json: @clinic}
 		end
