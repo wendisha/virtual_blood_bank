@@ -57,13 +57,6 @@ const listenForNewApptSubmission = () => {
     });
 }
 
-// const showAppts = () => {
-//     $(document).on('ready', 'show-appointments', function(e) {
-//         //Prevent default behavior
-//         //e.preventDefault();    
-//     });
-// }
-
 //Constructor function (use response we get from server and use a JS Model Object)
 function Clinic(clinic) {
     this.id = clinic.id;
@@ -151,11 +144,6 @@ const getClinics = () => {
                 })
             })    
 }
-
-// const getClinic = () => {
-//     let id = $(this).attr('data-id')
-
-// }
 
 const getAppointments = () => {
     let donorId = $('.donor-show').data('donor-id')
