@@ -111,7 +111,7 @@ Appointment.prototype.formatAppointment = function() {
         <h4 class="font-weight-light"><strong>Clinic: </strong>${this.clinicName}</h4>
         <h4 class="font-weight-light"><strong>Date: </strong>${this.dateFormatted}</h4>
         <h4 class="font-weight-light"><strong>Time: </strong>${this.timeFormatted}</h4><br><br>
-        <h4 class="font-weight-light all_clinics"><a href="/donors/${this.donor_id}"><strong>Go Back To Your Details</strong></a></h4>
+        <h4 class="font-weight-light"><a href="/donors/${this.donor_id}"><strong>Go Back To Your Details</strong></a></h4>
     </section><br><br>
     `
     return appointmentHtml;
