@@ -30,9 +30,9 @@ const listenForClinic = () => {
         e.preventDefault();
         clearDom();
         let id = $(this).attr('data-id')
-        let url = homeUrl + "clinics" + id;
+        let url = homeUrl + "clinics/" + id;
         history.pushState(null, null, url)
-        fetch(`clinics/${id}.json`)
+        fetch(`${id}.json`)
         .then(response => response.json())
         .then(clinic => {
             let newClinic = new Clinic(clinic);
@@ -99,7 +99,7 @@ Clinic.prototype.formatShow = function() {
     <section class="container">
         <h4 class="font-weight-light"><strong>Name: </strong>${this.name}</h4>
         <h4 class="font-weight-light"><strong>State: </strong>${this.state}</h4><br><br>
-        <h4 class="font-weight-light"><a href="/clinics"><strong>Go Back To See All Clinics</strong></a></h4>
+        <h4 class="font-weight-light all_clinics"><a href="/clinics"><strong>Go Back To See All Clinics</strong></a></h4>
     `
     return clinicHtml;
 }
@@ -129,22 +129,22 @@ Appointment.prototype.formatAppointmentsIndex = function() {
 }
 
 const getClinics = () => {
-//Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
-//Since we wrote the backend API, it will be resolved.
-    fetch(`/clinics.json`)
-        //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
-        .then(response => response.json())
-        //Return the data we got in a following then method. Call it clinics, to be semantic
-        .then(clinics => {
-            clearDom();
-            //Iterate over all the clinics
-            clinics.forEach(clinic => {
-                //Use constructor function to create clinic objects
-                let newClinic = new Clinic(clinic);
-                let clinicContent = newClinic.formatIndex();
-                $('#app-container').append(clinicContent);
-            })
-        })    
+    //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
+    //Since we wrote the backend API, it will be resolved.
+        fetch(`/clinics.json`)
+            //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
+            .then(response => response.json())
+            //Return the data we got in a following then method. Call it clinics, to be semantic
+            .then(clinics => {
+                clearDom();
+                //Iterate over all the clinics
+                clinics.forEach(clinic => {
+                    //Use constructor function to create clinic objects
+                    let newClinic = new Clinic(clinic);
+                    let clinicContent = newClinic.formatIndex();
+                    $('#app-container').append(clinicContent);
+                })
+            })    
 }
 
 // const getClinic = () => {
