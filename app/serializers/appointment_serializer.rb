@@ -1,8 +1,8 @@
 class AppointmentSerializer < ActiveModel::Serializer
   #Pick and choose what we want to render as json
-  attributes :id, :donor_id, :clinic_id, :date, :time, :donor_username, :clinic_name, :date_formatted
+  attributes :id, :donor_id, :clinic_id, :date, :time, :donor_username, :clinic_name, :date_formatted, :time_formatted
 
-  #add associations????
+  #Better not to have the associations because it will give access to the whole donor object, including the authenticity token
   # belongs_to :donor
   # belongs_to :clinic
 
@@ -22,4 +22,8 @@ class AppointmentSerializer < ActiveModel::Serializer
     d_f.strftime("%B %d, %Y")
   end
 
+  def time_formatted
+    t_f = object.time
+    t_f.strftime("%l:%M%p")
+  end
 end

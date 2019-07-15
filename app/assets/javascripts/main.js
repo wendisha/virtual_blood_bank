@@ -80,6 +80,7 @@ function Appointment(appointment) {
     this.donor_username = appointment.donor_username   //CAMELCASE EVERYTHING!!!
     this.clinicName = appointment.clinic_name
     this.dateFormatted = appointment.date_formatted
+    this.timeFormatted = appointment.time_formatted
 }
 
 //Prototype function (similar to instance methods) to format our clinics
@@ -116,7 +117,7 @@ Appointment.prototype.formatAppointment = function() {
         <h4 class="font-weight-light"><strong>Username: ${this.donor_username}<br></strong></h4>
         <h4 class="font-weight-light"><strong>Clinic: ${this.clinicName}<br></strong></h4>
         <h4 class="font-weight-light"><strong>Date: ${this.dateFormatted}<br></strong></h4>
-        <h4 class="font-weight-light"><strong>Time: ${this.time}<br></strong></h4>
+        <h4 class="font-weight-light"><strong>Time: ${this.timeFormatted}<br></strong></h4>
     </section><br>
     `
     return appointmentHtml;
