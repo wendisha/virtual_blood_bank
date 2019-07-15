@@ -114,10 +114,11 @@ Appointment.prototype.formatAppointment = function() {
         <h2 class="display-4">Appointment's Details</h2>
     </section><br>
     <section class="container">
-        <h4 class="font-weight-light"><strong>Username: </strong>${this.donor_username}<br></h4>
-        <h4 class="font-weight-light"><strong>Clinic: </strong>${this.clinicName}<br></h4>
-        <h4 class="font-weight-light"><strong>Date: </strong>${this.dateFormatted}<br></h4>
-        <h4 class="font-weight-light"><strong>Time: </strong>${this.timeFormatted}<br></h4>
+        <h4 class="font-weight-light"><strong>Username: </strong>${this.donor_username}</h4>
+        <h4 class="font-weight-light"><strong>Clinic: </strong>${this.clinicName}</h4>
+        <h4 class="font-weight-light"><strong>Date: </strong>${this.dateFormatted}</h4>
+        <h4 class="font-weight-light"><strong>Time: </strong>${this.timeFormatted}</h4><br><br>
+        <h4 class="font-weight-light all_clinics"><a href="/donors/${this.donor_id}"><strong>Go Back To Your Details</strong></a></h4>
     </section><br><br>
     `
     return appointmentHtml;
