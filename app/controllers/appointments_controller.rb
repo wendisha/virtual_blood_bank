@@ -87,10 +87,16 @@ class AppointmentsController < ApplicationController
     def show
         if params[:clinic_id]
             @appointment = Appointment.find(params[:id])
+            # respond_to do |f|
+            #     f.html 
+            #     f.json {render json: @appointment}
         else
             @donor = Donor.find(params[:donor_id])
             if @donor.id == current_donor.id
                 @appointment = Appointment.find(params[:id])
+                # respond_to do |f|
+                #     f.html 
+                #     f.json {render json: @appointment}
             else
                 render plain: "You are not authorized!"
             end
