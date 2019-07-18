@@ -122,10 +122,11 @@ Appointment.prototype.formatAppointmentsIndex = function() {
     <table class="table table-sm table-borderless">
         <tbody>
             <tr>
+                <td><h5 class="font-weight-light text-left">${this.dateFormatted}</h5></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td><h5 class="font-weight-light text-left"><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5></td>
+                <td><h5 class="font-weight-light text-center">${this.timeFormatted}</h5></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td><h5 class="font-weight-light text-right">${this.clinicName}</h5></td>
-                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
             </tr>
         </tbody>
     </table>
