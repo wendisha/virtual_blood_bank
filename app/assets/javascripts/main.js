@@ -119,9 +119,16 @@ Appointment.prototype.formatAppointment = function() {
 
 Appointment.prototype.formatAppointmentsIndex = function() {
     let appointmentHtml = `
-    <section class="container text-left">
-        <h5 class="font-weight-light text-center"><strong>Date: </strong><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5>
-    </section>
+    <table class="table table-sm table-borderless">
+        <tbody>
+            <tr>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+                <td><h5 class="font-weight-light text-left"><a href="/donors/${this.donor_id}/appointments/${this.id}" data-id="${this.id}" class="show_link">${this.date}</a></h5></td>
+                <td><h5 class="font-weight-light text-right">${this.clinicName}</h5></td>
+                <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        </tbody>
+    </table>
     `
     return appointmentHtml;
 }
