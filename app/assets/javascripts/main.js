@@ -2,6 +2,7 @@ const homeUrl = 'http://localhost:3000/'
 
 //Document ready function to hijack the click or submit events
 //The $ is a shortcut for jQuery, and provides an interface to the library.
+//We add this to make sure the DOM is loaded...
 $(() => {
     listenForAllClinicsClick();
     listenForClinic();
@@ -46,10 +47,14 @@ const listenForNewApptSubmission = () => {
     $(".new_appointment").on("submit", function(e) {      
         e.preventDefault();
         //Grab the values entered in the form, using Serialize:
+        //Serialize makes a string from a jquery on a form that has field controls on it..
         const values = $( this ).serialize()
         let donorId = $('.apptDonorId').data('appt-donor-id')
+        console.log(values)
         $.post(`/donors/${donorId}/appointments`, values).done(function(data) {
-            $('#app-container').html('')
+            console.log(data)
+            clearDom();
+            // $('#app-container').html('')
             const newAppointment = new Appointment(data)
             const htmlToAdd = newAppointment.formatAppointment()
             $('#app-container').append(htmlToAdd)
@@ -58,10 +63,12 @@ const listenForNewApptSubmission = () => {
 }
 
 //Constructor function (use response we get from server and use a JS Model Object)
-function Clinic(clinic) {
-    this.id = clinic.id;
-    this.name = clinic.name;
-    this.state = clinic.state;
+class Clinic {
+    constructor(clinic) {
+        this.id = clinic.id;
+        this.name = clinic.name;
+        this.state = clinic.state;
+    }
 }
 
 function Appointment(appointment) {
@@ -124,7 +131,7 @@ Appointment.prototype.formatAppointmentsIndex = function() {
             <tr>
                 <td><h5 class="font-weight-light text-left">${this.dateFormatted}</h5></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                <td><h5 class="font-weight-light text-center">${this.timeFormatted}</h5></td>
+                <td><h5 class="font-weight-light text-left">${this.timeFormatted}</h5></td>
                 <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
                 <td><h5 class="font-weight-light text-right">${this.clinicName}</h5></td>
             </tr>
@@ -138,7 +145,7 @@ const getClinics = () => {
     //Whenever we use fetch (native API to the browser called on the global object), we get back a promise that will be resolved or rejected. 
     //Since we wrote the backend API, it will be resolved.
         fetch(`/clinics.json`)
-            //Use #then to get the response object and call #json to convert it and extract/parse the data that we want
+            //Use #then to get the response object (which is a promise) and call #json to convert it and extract/parse the data that we want
             .then(response => response.json())
             //Return the data we got in a following then method. Call it clinics, to be semantic
             .then(clinics => {
