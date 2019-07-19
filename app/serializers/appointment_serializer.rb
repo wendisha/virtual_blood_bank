@@ -9,7 +9,6 @@ class AppointmentSerializer < ActiveModel::Serializer
   #to specify which data I want to present as JSON and how I want present it.
   def donor_username
     d = object.donor 
-    #{username: d.username}
     d.username
   end
 
@@ -28,7 +27,3 @@ class AppointmentSerializer < ActiveModel::Serializer
     t_f.strftime("%l:%M%p")
   end
 end
-
-#HTML: how te contect is laid-out
-#CSS: how the content looks
-#JS: how the content behaves

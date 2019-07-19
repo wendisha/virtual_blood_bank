@@ -7,6 +7,7 @@ $(() => {
     listenForAllClinicsClick();
     listenForClinic();
     listenForNewApptSubmission();
+    getDonor();
 });
 
 //Clear html to repaint the DOM
@@ -52,7 +53,6 @@ const listenForNewApptSubmission = () => {
         let donorId = $('.apptDonorId').data('appt-donor-id')
         console.log(values)
         $.post(`/donors/${donorId}/appointments`, values).done(function(data) {
-            console.log(data)
             clearDom();
             // $('#app-container').html('')
             const newAppointment = new Appointment(data)
@@ -166,6 +166,22 @@ const getAppointments = () => {
     .then(response => response.json())
     .then(appointments => {
         appointments.forEach(appointment => {
+            let newAppt = new Appointment(appointment);
+            let appointmentHtml = newAppt.formatAppointmentsIndex();
+            $('#show-appointments').append(appointmentHtml);
+        })
+    })    
+}
+
+const getDonor = () => {
+    let donorId = $('.donor-show').data('donor-id')
+    fetch (`/donors/${donorId}.json`)
+    .then(response => response.json())
+    .then(donor => {
+        // console.log(donor)
+        const donorAppointments = donor.appointments
+        // console.log(donorAppointments)
+        donorAppointments.forEach(appointment => {
             let newAppt = new Appointment(appointment);
             let appointmentHtml = newAppt.formatAppointmentsIndex();
             $('#show-appointments').append(appointmentHtml);
