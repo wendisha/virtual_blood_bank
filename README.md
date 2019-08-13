@@ -1,7 +1,7 @@
 # README
 
 ## Virtual Blood Bank
-CMS that allows users to register and and book appointments to donate blood in any of the different clinics listed.
+Web application that allows users to register and and book appointments to donate blood in any of the different clinics listed.
 
 <h1 align="center">
   <img src="https://i.imgur.com/J89aGNA.jpg" alt="VBB" title="Welcome to the Virtual Blood Bank!" width="160"><br>
